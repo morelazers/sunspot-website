@@ -2,7 +2,7 @@ $(document).ready(function(){
 	var date = new Date();
 	var time = date.getTime();
 });
-	
+
 function getLiveMovement() {
   
 	var request = 
@@ -16,38 +16,38 @@ function getLiveMovement() {
     	console.log(data.spotAddr);
     	console.log(data.timestamp);
 		
-		console.log("Users: " + $("#user-" + data.spotAddr).length);
-		
-		var spotId = data.spotAddr.toString();
-		
-		spotId = spotId.replace(/\./g, "\\.");
-		
-		console.log(spotId);
-		
-		var exists = $("#user-" + spotId).length;
-		
-		console.log("#user-" + spotId);
-		
-		if(exists === 0){
-			console.log("Appending");
-			$("#live-user-location-zones").append("<div id='user-" + data.spotAddr + "' class='live-user-location zone-1'></div>");
-		}
+  		console.log("Users: " + $("#user-" + data.spotAddr).length);
+  		
+  		var spotId = data.spotAddr.toString();
+  		
+  		spotId = spotId.replace(/\./g, "\\.");
+  		
+  		console.log(spotId);
+  		
+  		var exists = $("#user-" + spotId).length;
+  		
+  		console.log("#user-" + spotId);
+  		
+  		if(exists === 0){
+  			console.log("Appending");
+  			$("#live-user-location-zones").append("<div id='user-" + data.spotAddr + "' class='live-user-location zone-1'></div>");
+  		}
 
     	/* NEW MOVEMENT DISPLAY CODE */
     
-		newZone = data.zone;
+		  newZone = data.zone;
 
-    	console.log(newZone);
+    	console.log("New zone number : " + newZone);
 
     	/* find out which zone the user was in previously so we can resize the other elements */
     	oldZone = parseInt($("#user-" + spotId).attr('class').slice(24));
 
-    	console.log(oldZone);
+    	console.log("Old zone number :" + oldZone);
 
     	/* add the zone class to the user div */
     	$("#user-" + spotId).removeClass (function (index, css) {
 		    return (css.match (/\bzone-\S+/g) || []).join(' ');
-		});
+		  });
 
         $("#user-" + spotId).addClass("zone-" + newZone);
 
@@ -56,7 +56,7 @@ function getLiveMovement() {
         var usersInNewZone = $(".zone-" + newZone).length - 1;
 
 
-		/*console.log(usersInOldZone);
+    		/*console.log(usersInOldZone);
         console.log(usersInNewZone);*/
 
         oldHeight = parseInt($("#zone-" + oldZone).css('height')) / usersInOldZone;
@@ -72,7 +72,8 @@ function getLiveMovement() {
     	//console.log(newHeight);
 
         move = $("#zone-" + newZone).position();
-        console.log(move.top + (newHeight * (usersInNewZone - 1)));
+        console.log("top: " + move.top + (newHeight * (usersInNewZone - 1)));
+        console.log("left: " + move.left);
         $("#user-" + spotId).animate({
             top: move.top + (newHeight * (usersInNewZone -1 )),
             left: move.left,
