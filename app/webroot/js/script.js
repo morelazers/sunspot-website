@@ -133,6 +133,7 @@ $(document).ready(function(){
 function loadLabMovementScreen(){
         getLiveMovement();
         window.updateMovement = window.setInterval(getLiveMovement, 1000);
+		window.updateSwitch = window.setInterval(getLiveSwitchPress, 500);
         $("#movement").show();
     }
     

@@ -4,7 +4,6 @@ $(document).ready(function(){
 });
 
 function getLiveMovement() {
-  
 	var request = 
     $.ajax(window.location.origin + "/graphs/getLiveMovementData/",
     {
@@ -12,24 +11,24 @@ function getLiveMovement() {
         dataType: "JSON"
     });
     request.done(function(data){
-    	console.log(data.zone);
-    	console.log(data.spotAddr);
-    	console.log(data.timestamp);
+    	//console.log(data.zone);
+    	//console.log(data.spotAddr);
+    	//console.log(data.timestamp);
 		
-  		console.log("Users: " + $("#user-" + data.spotAddr).length);
+  		//console.log("Users: " + $("#user-" + data.spotAddr).length);
   		
   		var spotId = data.spotAddr.toString();
   		
   		spotId = spotId.replace(/\./g, "\\.");
   		
-  		console.log(spotId);
+  		//console.log(spotId);
   		
   		var exists = $("#user-" + spotId).length;
   		
-  		console.log("#user-" + spotId);
+  		//console.log("#user-" + spotId);
   		
   		if(exists === 0){
-  			console.log("Appending");
+  			//console.log("Appending");
   			$("#live-user-location-zones").append("<div id='user-" + data.spotAddr + "' class='live-user-location zone-1'></div>");
   		}
 
@@ -37,12 +36,10 @@ function getLiveMovement() {
     
 		  newZone = data.zone;
 
-    	console.log("New zone number : " + newZone);
-
     	/* find out which zone the user was in previously so we can resize the other elements */
     	oldZone = parseInt($("#user-" + spotId).attr('class').slice(24));
 
-    	console.log("Old zone number :" + oldZone);
+    	console.log("Spot " + spotId + " moved from " + oldZone + " to " + newZone);
 
     	/* add the zone class to the user div */
     	$("#user-" + spotId).removeClass (function (index, css) {
@@ -75,8 +72,8 @@ function getLiveMovement() {
         console.log("top: " + move.top + (newHeight * (usersInNewZone - 1)));
         console.log("left: " + move.left);
         $("#user-" + spotId).animate({
-            top: move.top + (newHeight * (usersInNewZone -1 )),
-            left: move.left,
+            "margin-top": move.top + (newHeight * (usersInNewZone - 1)) - move.top,
+            "margin-left": move.left,
             width: newWidth,
             height: newHeight
         });
@@ -93,14 +90,16 @@ function getLiveMovement() {
       /* NEW MOVEMENT DISPLAY CODE */
       
       
-    	var labZone =  $(".zone-" + data.zone);
-    	var userCount = labZone.length;
-    	var moveTo = $(".zone-" + data.zone).position();
-    	var userDiv = $("#user-" + spotId);
-    	userDiv.animate({
+    	//var labZone =  $("#zone-" + data.zone);
+    	//var userCount = labZone.length;
+    	//var moveTo = labZone.position();
+    	//var userDiv = $("#user-" + spotId);
+    	/*
+		userDiv.animate({
     		top: moveTo.top,
     		left: moveTo.left
     	});
+		*/
     });
 }
 

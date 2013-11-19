@@ -39,6 +39,7 @@ $(document).ready(function(){
     	//console.log(newHeight);
 
         move = $(this).position();
+		console.log(move);
         console.log(move.top + (newHeight * (usersInNewZone - 1)));
         $('#user-test').animate({
             top: move.top + (newHeight * (usersInNewZone -1 )),

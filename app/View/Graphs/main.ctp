@@ -27,12 +27,6 @@
                 <div id="zone-4" class="lab-zone zone-4"></div>
                 <div id="zone-5" class="lab-zone zone-5"></div>
                 <div id="zone-6" class="lab-zone zone-6"></div>
-
-                <div id="user-test" class="live-user-location"></div>
-                <div id="user-test-2" class="live-user-location zone-1"></div>
-                <div id="user-test-3" class="live-user-location zone-1"></div>
-
-
             </div>
 
         </div>
@@ -220,7 +214,6 @@ window.onload = function(){
 <script src="js/liveCharts.js"></script>
 <script src="js/stopAllLiveUpdates.js"></script>
 <script src="js/script.js"></script>
-<script src="js/test.js"></script>
 
 <script>
     google.load('visualization', '1.0', {'packages':['corechart']});

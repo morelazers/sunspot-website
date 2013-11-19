@@ -650,6 +650,10 @@ nav a:hover {
 }
 
 .live-user-location{
+	-webkit-transition:background-image 1s ease-in;  
+    -moz-transition:background-image 1s ease-in;  
+    -o-transition:background-image 1s ease-in;  
+    transition:background-image 1s ease-in;  
     background-image: repeating-linear-gradient(45deg, #8b0 0px, #8b0 25px, transparent 25px, transparent 50px, transparent 50px);
 }
 

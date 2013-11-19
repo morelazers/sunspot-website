@@ -23,8 +23,23 @@ function getLiveSwitchPress() {
     });
     request.done(function(data){
     	console.log(data.spotAddr + " requested a colour change to " + $.trim(colours[data.colourId]));
-    	$("#user-" + data.spotAddr).css('background-image',
-    	  'repeating-linear-gradient(45deg, '+data.colourId+' 0px, '+data.colourId+' 25px, transparent 25px, transparent 50px, transparent 50px)');
+		
+		var spotId = data.spotAddr.toString();
+		
+		spotId = spotId.replace(/\./g, "\\.");
+		
+		console.log(spotId);
+		
+		var spot = $("#user-" + spotId);
+		
+		
+		
+		console.log(spot.css('background-image'));
+		
+		console.log('repeating-linear-gradient(45deg, '+ colours[data.colourId] +' 0px, '+ colours[data.colourId] +' 25px, transparent 25px, transparent 50px, transparent 50px)');
+		
+    	$("#user-" + spotId).fadeOut(1000).css('background-image',
+    	  'repeating-linear-gradient(45deg, '+ colours[data.colourId] +' 0px, '+ colours[data.colourId] +' 25px, transparent 25px, transparent 50px, transparent 50px)').fadeIn(1000);
     	$("#switch-colour-box").css('background-color', $.trim(colours[data.colourId]));
     });
     
