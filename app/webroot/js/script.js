@@ -181,6 +181,7 @@ function loadLabMovementScreen(){
         drawDailyLightChart();
         $("#hourly-chart-div").show();
         $("#chart-nav-buttons").show();
+        $("#charts-dropdown").show();
         $("#charts-light-dropdown").show();
     }
 
@@ -188,5 +189,6 @@ function loadLabMovementScreen(){
         drawDailyTempChart();
         $("#static-temp-chart").show();
         $("#chart-nav-buttons").show();
+        $("#charts-dropdown").show();
         $("#charts-temp-dropdown").show();
     }

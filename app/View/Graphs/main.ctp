@@ -72,7 +72,7 @@
     
 
 <div id="lab-sidebar" class="slider-sidebar">
-    <div id="lab-dropdown" class="dropdown">
+    <div id="lab-dropdown" class="sidebar-dropdown">
         <select class="sidebar-select">
             <ul class="transparent">
                 <option value="movement">Movement</option>
@@ -96,18 +96,24 @@
     
 
     <div id="stats-sidebar" class="slider-sidebar">
-        <div id="stats-dropdown" class="dropdown">
-            <select class="sidebar-select">
+        <div id="stats-dropdown" class="sidebar-dropdown">
+            <select class="sidebar-select" class="dropdown">
                 <ul class="transparent">
                     <option value="light">Light</option>
                     <option value="temperature">Temperature</option>
                 </ul>
             </select>
         </div>
-        <select id="light-date-sel" class="dropdown"></div>
-        <select id="light-hour-sel" class="dropdown"></div>
-        <select id="temp-date-sel" class="dropdown"></div>
-        <select id="temp-hour-sel" class="dropdown"></div>
+        <div id="charts-dropdown" class="sidebar-dropdown">
+          <div id="charts-light-dropdown">
+            <select class="sidebar-select" id="light-date-sel"></select>
+            <select class="sidebar-select" id="light-hour-sel"></select>
+          </div>
+          <div id="charts-temp-dropdown">
+            <select class="sidebar-select" id="temp-date-sel"></select>
+            <select class="sidebar-select" id="temp-hour-sel"></select>
+          </div>
+        </div>
     </div>
 </div>
 
