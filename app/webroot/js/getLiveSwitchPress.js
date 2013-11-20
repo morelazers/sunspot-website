@@ -38,8 +38,11 @@ function getLiveSwitchPress() {
 		
 		console.log('repeating-linear-gradient(45deg, '+ colours[data.colourId] +' 0px, '+ colours[data.colourId] +' 25px, transparent 25px, transparent 50px, transparent 50px)');
 		
-    	$("#user-" + spotId).fadeOut(1000).css('background-image',
-    	  'repeating-linear-gradient(45deg, '+ colours[data.colourId] +' 0px, '+ colours[data.colourId] +' 25px, transparent 25px, transparent 50px, transparent 50px)').fadeIn(1000);
+    	$("#user-" + spotId).fadeTo(500, 0.5, function(){
+			$("#user-" + spotId).css('background-image',
+				'repeating-linear-gradient(45deg, '+ colours[data.colourId] +' 0px, '+ colours[data.colourId] +' 25px, transparent 25px, transparent 50px, transparent 50px)'
+			).fadeTo(500, 1);
+		});
     	$("#switch-colour-box").css('background-color', $.trim(colours[data.colourId]));
     });
     

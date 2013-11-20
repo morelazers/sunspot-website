@@ -55,10 +55,11 @@ function getLiveMovement() {
 
     		/*console.log(usersInOldZone);
         console.log(usersInNewZone);*/
-
+		oldMove = $("#zone-" + oldZone).position();
         oldHeight = parseInt($("#zone-" + oldZone).css('height')) / usersInOldZone;
         otherUsersInOldZone = $(".live-user-location.zone-" + oldZone);
         otherUsersInOldZone.animate({
+			"margin-top" : oldMove.top + (oldHeight * (usersInOldZone - 1)) - oldMove.top + 1,
         	height: oldHeight
         });
 
@@ -72,8 +73,8 @@ function getLiveMovement() {
         console.log("top: " + move.top + (newHeight * (usersInNewZone - 1)));
         console.log("left: " + move.left);
         $("#user-" + spotId).animate({
-            "margin-top": move.top + (newHeight * (usersInNewZone - 1)) - move.top,
-            "margin-left": move.left,
+            "margin-top": move.top + (newHeight * (usersInNewZone - 1)) - move.top + 2,
+            left: move.left + 2,
             width: newWidth,
             height: newHeight
         });
@@ -81,7 +82,6 @@ function getLiveMovement() {
         otherusersInNewZone = $(".live-user-location.zone-" + newZone);
 
         //console.log(otherusersInNewZone.length);
-
         otherusersInNewZone.animate({
         	height: newHeight
         });

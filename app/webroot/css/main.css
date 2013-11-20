@@ -602,28 +602,29 @@ nav a:hover {
 }
 
 .zone-1{
-    /*top: -9px;*/
+    top: -9px;
     height: 125px;
     width: 244px;
-    /*margin-left: 4px;*/
+    left: 4px;
 }
 
 .zone-2{
-    top: 120px;
+    top: 118px;
     height: 125px;
     width: 244px;
+	left: 4px;
     /*margin-left: 4px;*/
 }
 
 .zone-3{
+	top: -9px;
     width: 379px;
     left: 250px;
-    /*margin-top: -9px;*/
     height: 125px;
 }
 
 .zone-4{
-    top: 120px;
+    top: 118px;
     width: 379px;
     left: 250px;
     /*margin-top: -9px;*/
@@ -631,6 +632,7 @@ nav a:hover {
 }
 
 .zone-5{
+	top: -9px;
     left: 631px;
     height: 125px;
     /*margin-top: -9px;*/
@@ -642,7 +644,7 @@ nav a:hover {
     height: 125px;
     /*margin-top: -9px;*/
     width: 244px;
-    top: 120px;
+    top: 118px;
 }
 
 #user-test{
@@ -650,6 +652,7 @@ nav a:hover {
 }
 
 .live-user-location{
+	position: absolute;
 	-webkit-transition:background-image 1s ease-in;  
     -moz-transition:background-image 1s ease-in;  
     -o-transition:background-image 1s ease-in;  

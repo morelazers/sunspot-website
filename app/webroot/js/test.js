@@ -42,8 +42,8 @@ $(document).ready(function(){
 		console.log(move);
         console.log(move.top + (newHeight * (usersInNewZone - 1)));
         $('#user-test').animate({
-            top: move.top + (newHeight * (usersInNewZone -1 )),
-            left: move.left,
+            top: move.top + (newHeight * (usersInNewZone -1 )) + 2,
+            left: move.left + 2,
             width: newWidth,
             height: newHeight
         });

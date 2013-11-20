@@ -1,13 +1,38 @@
 <?php 
 App::uses('Twitter','Vendor');
 App::uses('twitteroauth.php','Vendor');
+
+
 class TwitterController extends AppController {
 
-	public $uses = array('FollowerId');
 
-	
+	public $uses = array('FollowerId', 'AverageLightValue','AverageTempValue');
 
-	public function inDB($id){
+
+	public function sendHourTweet(){
+
+			$consumerKey 		= 'f13aHtOr8H6P85kud4qx3Q'; 
+			$consumerSecret 	= '5RxwNk4QGmfV0Y56K6ViPTOQrWpgvjqn7lfJp5ZwQ';
+			//Access tokens "oauth_token"
+			$accessToken 		= '2164730497-HmrMmBDCJooJmQPtU3S1QOOzlXHd62xzO7VY2u1';
+			$accessTokenSecret 	= 'Sml2EmLI8YSGSlNwXxjJMImtUkV7l4zYRiz8juoLqsYBb';
+
+			$lastLightValue = $this->AverageLightValue->find('all', array('order' =>'timestamp DESC', 'limit' => 1));
+			$lastTempValue = $this->AverageTempValue->find('all', array('order' =>'timestamp DESC', 'limit' => 1));
+			
+		try {
+
+			$twitter = new Twitter($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret);
+			$status = $twitter->send('Summary for the last two hours: Average Temperature was: ' . $lastTempValue . ', Average light was: ' . $lastLightValue);
+			echo $status ? 'OK' : 'ERROR';
+		} catch (Exception $e) {
+			echo "Error: ".$e;
+		}
+	}
+
+
+	//sendHourTweet();
+	/*public function inDB($id){
 		$condition = array(
 					'followerID = ?' => $id
 					);
@@ -19,7 +44,6 @@ class TwitterController extends AppController {
 			return false;
 		}
 	}
-
 	public function directM(){
 
 			//twitter credentials & OAuth settings 
@@ -60,7 +84,7 @@ class TwitterController extends AppController {
 				echo "Error: ".$e;
 			}
 	}
-/*
+
 	public function sendHourlyTweet($HourlyaverageTemp, $HourlyaverageLight, $HourlyinteractionCount ) {
 
 		try {
@@ -150,5 +174,6 @@ class TwitterController extends AppController {
 	}
 
 */
+
 }
-?>
+
