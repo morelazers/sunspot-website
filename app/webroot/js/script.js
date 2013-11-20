@@ -166,6 +166,9 @@ function loadLabMovementScreen(){
         $("#hourly-chart-div").hide();
         $("#movement").hide();
         $("#chart-nav-buttons").hide();
+        $("#charts-dropdown").hide();
+        $("#charts-temp-dropdown").hide();
+        $("#charts-light-dropdown").hide();
         $("#lab-widgets").hide();
         $("#switch-colour-box").hide();
         $(".live-chart").hide();
@@ -178,10 +181,12 @@ function loadLabMovementScreen(){
         drawDailyLightChart();
         $("#hourly-chart-div").show();
         $("#chart-nav-buttons").show();
+        $("#charts-light-dropdown").show();
     }
 
     function loadStatsTempScreen(){
         drawDailyTempChart();
         $("#static-temp-chart").show();
         $("#chart-nav-buttons").show();
+        $("#charts-temp-dropdown").show();
     }

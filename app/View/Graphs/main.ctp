@@ -104,6 +104,10 @@
                 </ul>
             </select>
         </div>
+        <select id="light-date-sel" class="dropdown"></div>
+        <select id="light-hour-sel" class="dropdown"></div>
+        <select id="temp-date-sel" class="dropdown"></div>
+        <select id="temp-hour-sel" class="dropdown"></div>
     </div>
 </div>
 
