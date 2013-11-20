@@ -182,6 +182,6 @@ function loadLabMovementScreen(){
 
     function loadStatsTempScreen(){
         drawDailyTempChart();
-        $("#hourly-chart-div").show();
+        $("#static-temp-chart").show();
         $("#chart-nav-buttons").show();
     }

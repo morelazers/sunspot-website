@@ -27,7 +27,7 @@
                 <div id="zone-4" class="lab-zone zone-4"></div>
                 <div id="zone-5" class="lab-zone zone-5"></div>
                 <div id="zone-6" class="lab-zone zone-6"></div>
-				<div id="user-test" class="live-user-location zone-1"></div>
+				        <div id="user-test" class="live-user-location zone-1"></div>
             </div>
 
         </div>
