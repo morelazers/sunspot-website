@@ -175,13 +175,13 @@ function loadLabMovementScreen(){
     
 
     function loadStatsLightScreen(){
-        drawDailyLightChart(0);
+        drawDailyLightChart();
         $("#hourly-chart-div").show();
         $("#chart-nav-buttons").show();
     }
 
     function loadStatsTempScreen(){
-        drawDailyTempChart(0);
+        drawDailyTempChart();
         $("#hourly-chart-div").show();
         $("#chart-nav-buttons").show();
     }
