@@ -1,6 +1,7 @@
 <?php
 
-App::uses('OAuth.php','Vendor');
+App::import('Vendor','OAuth');
+
 
 /**
  * Twitter for PHP - library for sending messages to Twitter and receiving status updates.

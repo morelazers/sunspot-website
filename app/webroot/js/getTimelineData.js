@@ -1,24 +1,28 @@
-$(document).ready(function(){
-    
+ 
     function getInteractionData(){
         
-        var request = 
-        $.ajax(window.location.origin + "/graphs/getInteractionData/",
+        var request = $.ajax(window.location.origin + "/graphs/getInteractionData/",
         {
-            type: "POST",
-            data: {},
+            type: "GET",
             dataType: "JSON"
         });
-        request.done(function(data){					
-            for (var key in data.history){          		
-                for(var x in key){          			
-                    console.log(key + " -> " + key[x]);        
-                    console.log(x);
-                }			
-            }
-            console.log(data.history);
+        request.done(function(data){
+			var vals = data.interactionsReadings;
+			console.log(vals);
+			var i = 0;
+			var white = 0;
+			var door = 0;
+			var fridge = 0;
+			for(i = 0; i < vals.length; i++){
+				if((vals[i]['InteractionData']['object_name']) == "whiteboard"){
+					$('#W1').html(white+1);
+				}
+				if((vals[i]['InteractionData']['object_name']) == "fridge"){
+					$('#F1').html(fridge+1);
+				}
+				if((vals[i]['InteractionData']['object_name']) == "door"){
+					$('#D1').html(door+1);
+				}
+			}
         });     
-    }
-   getInteractionData();
-});/*var myArray = JSON.parse(data);                        for (var i = 0; i < myArray.length; i++) {			    alert(myArray[i].Title);			}*/            			/*for (var i = 0; i < data.values; i++) {			    var object = data[i];			    for (var property in object) {			        console.log('item ' + i + ': ' + property + '=' + object[property]);			    }			}*/						/*for (var key in data) {				console.log(key);			}						for (var key in data) {  				if (data.hasOwnProperty(key)) {    				console.log(key);  				}			}*/			    			/*console.log(data.history);            var result = data.filter(function(data){			    if (data.history == object){			        console.log(data.history);			    } else {			        alert("wrong");			    }			});*/						/*console.log(data.history);*/
-
+   }

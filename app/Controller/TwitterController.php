@@ -6,10 +6,98 @@ App::uses('twitteroauth.php','Vendor');
 class TwitterController extends AppController {
 
 
-	public $uses = array('FollowerId', 'AverageLightValue','AverageTempValue');
+	public $uses = array('FollowerId', 'AverageLightValue','AverageTempValue','DataStat', 'Actuators');
+
+		public function getTweets(){
+
+			 $consumerKey 		= 'f13aHtOr8H6P85kud4qx3Q'; 
+			 $consumerSecret 	= '5RxwNk4QGmfV0Y56K6ViPTOQrWpgvjqn7lfJp5ZwQ';
+			 $accessToken 		= '2164730497-HmrMmBDCJooJmQPtU3S1QOOzlXHd62xzO7VY2u1';
+			 $accessTokenSecret 	= 'Sml2EmLI8YSGSlNwXxjJMImtUkV7l4zYRiz8juoLqsYBb';
+
+			 $stats = array('light',
+			 				'temp',
+			 				'interaction');
+
+			try{
+				$twitter = new Twitter($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret);
+
+				$lasttweet = $this->DataStat->find('first');
+				debug($lasttweet);
+				$lasttweet = $lasttweet['DataStat']['stat_value'];
+				$id = array('since_id'=> intval($lasttweet));
+
+			//	$response = $twitter->cachedRequest("statuses/mentions_timeline", $id, "GET");
+
+				$response = $twitter->request("statuses/mentions_timeline", NULL, "GET");
+
+				//debug($response);
+				
+				foreach($response as $val){
+					if(($val->user->screen_name != 'LUISl_s')&&(!empty($val->entities->hashtags))) {
+						if($val->entities->hashtags[0]->text == "demand" &&
+							(in_array($val->entities->hashtags[1]->text, $stats))){
+								$this->tweetLast($val->user->id, $val->entities->hashtags[1]->text);
+						}
+						elseif($val->entities->hashtags[0]->text == "WarmMyHands"){
+							$this->toggleGloves(1);
+						}
+					}
+					$lastID = $val->id;
+				}
+				$this->Actuators->save(array(
+					'DataStat.stat_value' => $lastID,
+				    'DataStat.stat_name <=' => "last_tweet"
+				    )
+				);
+
+			}catch (Exception $e) {
+					echo "Error: ".$e;
+				}
+				//$this->redirect(array('controller' => 'graphs', 'action' => 'main'));
+	}
+	public function toggleGloves($val){
+		$this->Actuators->updateAll(
+		    array('Actuators.actuator_status' => 1),
+		    array('Actuators.actuator_name <=' => "gloves")
+		);
+	}
+	public function tweetLast($userID, $requested){
+			$consumerKey 		= 'f13aHtOr8H6P85kud4qx3Q'; 
+			$consumerSecret 	= '5RxwNk4QGmfV0Y56K6ViPTOQrWpgvjqn7lfJp5ZwQ';
+			$accessToken 		= '2164730497-HmrMmBDCJooJmQPtU3S1QOOzlXHd62xzO7VY2u1';
+			$accessTokenSecret 	= 'Sml2EmLI8YSGSlNwXxjJMImtUkV7l4zYRiz8juoLqsYBb';
 
 
-	public function sendHourTweet(){
+			$twitter = new Twitter($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret);
+			$lastvalue = 1;
+			$lasttime = "now";
+			/*
+			switch($requested){
+				case "light":
+					$lastrecord = $this->LightValue->find('first', array('order' =>'timestamp DESC'));
+					$lastvalue = $lastrecord[0]['LightValue']['reading_value'];
+					$lasttime = $lastrecord[0]['LightValue']['timestamp'];
+					break;
+				case "temp":
+					$lastrecord = $this->TempValue->find('first', array('order' =>'timestamp DESC'));
+					$lastvalue = $lastrecord[0]['TempValue']['reading_value'];
+					$lasttime = $lastrecord[0]['TempValue']['timestamp'];
+					break;
+				case "interaction":
+					$lastrecord = $this->InteractionData->find('first', array('order' =>'timestamp DESC'));
+					$lastvalue = $lastrecord[0]['InteractionData']['object_name'];
+					$lasttime = $lastrecord[0]['InteractionData']['timestamp'];
+					break;
+			}*/
+			$msg = "Last " . $requested . " value was " . $lastvalue . " at " . $lasttime;
+			$options = array(
+						"user_id" => $userID,
+						"text" => utf8_encode($msg)); // .$web_enc
+			$twitter->request("direct_messages/new", $options);
+	}
+
+	/*public function sendHourTweet(){
 
 			$consumerKey 		= 'f13aHtOr8H6P85kud4qx3Q'; 
 			$consumerSecret 	= '5RxwNk4QGmfV0Y56K6ViPTOQrWpgvjqn7lfJp5ZwQ';
@@ -19,20 +107,29 @@ class TwitterController extends AppController {
 
 			$lastLightValue = $this->AverageLightValue->find('all', array('order' =>'timestamp DESC', 'limit' => 1));
 			$lastTempValue = $this->AverageTempValue->find('all', array('order' =>'timestamp DESC', 'limit' => 1));
-			
-		try {
 
-			$twitter = new Twitter($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret);
-			$status = $twitter->send('Summary for the last two hours: Average Temperature was: ' . $lastTempValue . ', Average light was: ' . $lastLightValue);
-			echo $status ? 'OK' : 'ERROR';
-		} catch (Exception $e) {
-			echo "Error: ".$e;
-		}
+			$lastLightValue = $lastLightValue[0]['AverageLightValue']['reading_value'];
+			$lastTempValue = $lastTempValue[0]['AverageTempValue']['reading_value'];
+
+			//echo "Last light value: " . $lastLightValue . "<br>";
+			//echo "Last temp value: " . $lastTempValue . "<br>";
+
+			if(!empty($lastLightValue)){
+				try {
+					$twitter = new Twitter($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret);
+					$time = date("H:i:s");
+					$message = $time . ' Summary for the last hour: Average Temperature was: ' . $lastTempValue . 'C, Average light level was: ' . $lastLightValue . '.';
+					$status = $twitter->send(utf8_encode($message));
+					echo $status ? 'OK' : 'ERROR';
+				} catch (Exception $e) {
+					echo "Error: ".$e;
+				}
+			} else {
+				echo "no values";
+			}
 	}
-
-
-	//sendHourTweet();
-	/*public function inDB($id){
+	
+	public function inDB($id){
 		$condition = array(
 					'followerID = ?' => $id
 					);
@@ -85,95 +182,182 @@ class TwitterController extends AppController {
 			}
 	}
 
-	public function sendHourlyTweet($HourlyaverageTemp, $HourlyaverageLight, $HourlyinteractionCount ) {
+	public function sendDailyTweet() {
 
-		try {
-			$twitter = new Twitter($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret);
-			$status = $twitter->send('Summary for the last hour: Average Temperature was: ' . $HourlyaverageTemp . ', Average light was: ' . $HourlyaverageLight . ', ' . $HourlyinteractionCount . 'objects were interacted with');
-			echo $status ? 'OK' : 'ERROR';
-		} catch (Exception $e) {
-			echo "Error: ".$e;
-		}
+			$consumerKey 		= 'f13aHtOr8H6P85kud4qx3Q'; 
+			$consumerSecret 	= '5RxwNk4QGmfV0Y56K6ViPTOQrWpgvjqn7lfJp5ZwQ';
+			//Access tokens "oauth_token"
+			$accessToken 		= '2164730497-HmrMmBDCJooJmQPtU3S1QOOzlXHd62xzO7VY2u1';
+			$accessTokenSecret 	= 'Sml2EmLI8YSGSlNwXxjJMImtUkV7l4zYRiz8juoLqsYBb';
+			$conditions = array("stat_name = 'dailyTempAvg'")
+
+			$DailyTempValue = $this->DataStat->find('all', array('conditions' => $conditions,
+														'order' =>'timestamp DESC', 'limit' => 1));
+			$DailyLightValue = $this->DataStat->find('all', array('conditions' => array("stat_name = 'dailyLightAvg'"),
+														'order' =>'timestamp DESC', 'limit' => 1));
+			
+			$DailyTempValue = $DailyTempValue[0]['DailyTempValue']['stat_value'];
+			$DailyLightValue = $DailyLightValue[0]['DailyLightValue']['stat_value'];
+
+			if(!empty($DailyLightValue)){
+				try {
+					$twitter = new Twitter($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret);
+					$time = date("H:i:s");
+					$message = $time . ' Summary for Today: Average Temperature was: ' . $DailyTempValue . ', Average light was: ' . $DailyLightValue . '.';
+					$status = $twitter->send(utf8_encode($message));
+					echo $status ? 'OK' : 'ERROR';
+				} catch (Exception $e) {
+					echo "Error: ".$e;
+				}
+			} else {
+				echo "no values";
+			}
 	}
 
-	public function sendDailyTweet($DailyaverageTemp, $DailyaverageLight, $DailyinteractionCount ) {
+	public function HighestTempBreak() {
 
-		try {
-			$twitter = new Twitter($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret);
-			$status = $twitter->send('Summary for today: Average Temperature was: ' . $DailyaverageTemp . ', Average light was:' . $DailyaverageLight . ',' .$DailyinteractionCount . 'objects were interacted with');
-			echo $status ? 'OK' : 'ERROR';
-		} catch (Exception $e) {
-			echo "Error: ".$e;
-		}
+			$consumerKey 		= 'f13aHtOr8H6P85kud4qx3Q'; 
+			$consumerSecret 	= '5RxwNk4QGmfV0Y56K6ViPTOQrWpgvjqn7lfJp5ZwQ';
+			//Access tokens "oauth_token"
+			$accessToken 		= '2164730497-HmrMmBDCJooJmQPtU3S1QOOzlXHd62xzO7VY2u1';
+			$accessTokenSecret 	= 'Sml2EmLI8YSGSlNwXxjJMImtUkV7l4zYRiz8juoLqsYBb';
+			$conditions = array("stat_name = 'highestTemp'")
+
+			$HighestTemp = $this->DataStat->find('all', array('conditions' => $conditions,
+														'order' =>'timestamp DESC', 'limit' => 1));
+			
+			$HighestTemp = $HighestTemp[0]['highestTemp']['stat_value'];
+
+			if(!empty($HighestTemp)){
+				try {
+					$twitter = new Twitter($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret);
+					$time = date("H:i:s");
+					$message = $time . 'The Highest Temperature has been broken at: '. $HighestTemp . 'C.';
+					$status = $twitter->send(utf8_encode($message));
+					echo $status ? 'OK' : 'ERROR';
+				} catch (Exception $e) {
+					echo "Error: ".$e;
+				}
+			} else {
+				echo "no values";
+			}
 	}
 
-	public function sendWeeklyTweet($WeeklyaverageTemp, $WeeklyaverageLight, $WeeklyinteractionCount ) {
+	public function LowestTempBreak() {
 
-		try {
-			$twitter = new Twitter($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret);
-			$status = $twitter->send('Summary for the previous Week : Average Temperature was: ' . $WeeklyaverageTemp . ', Average light was:' . $WeeklyaverageLight . ',' .$WeeklyinteractionCount . 'objects were interacted with');
-			echo $status ? 'OK' : 'ERROR';
-		} catch (Exception $e) {
-			echo "Error: ".$e;
-		}
+			$consumerKey 		= 'f13aHtOr8H6P85kud4qx3Q'; 
+			$consumerSecret 	= '5RxwNk4QGmfV0Y56K6ViPTOQrWpgvjqn7lfJp5ZwQ';
+			//Access tokens "oauth_token"
+			$accessToken 		= '2164730497-HmrMmBDCJooJmQPtU3S1QOOzlXHd62xzO7VY2u1';
+			$accessTokenSecret 	= 'Sml2EmLI8YSGSlNwXxjJMImtUkV7l4zYRiz8juoLqsYBb';
+			$conditions = array("stat_name = 'lowestTemp'")
+
+			$LowestTemp = $this->DataStat->find('all', array('conditions' => $conditions,
+														'order' =>'timestamp DESC', 'limit' => 1));
+			
+			$LowestTemp = $LowestTemp[0]['lowestTemp']['stat_value'];
+
+			if(!empty($LowestTemp)){
+				try {
+					$twitter = new Twitter($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret);
+					$time = date("H:i:s");
+					$message = $time . 'The lowest temperature has been broken at: '. $LowestTemp . 'C.';
+					$status = $twitter->send(utf8_encode($message));
+					echo $status ? 'OK' : 'ERROR';
+				} catch (Exception $e) {
+					echo "Error: ".$e;
+				}
+			} else {
+				echo "no values";
+			}
 	}
 
-	public function HighestTempBreak($RecordHighestTemp) {
+	public function HighestLightBreak() {
 
-		try {
-			$twitter = new Twitter($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret);
-			$status = $twitter->send('Highest recorded temperature has been broken at:'.$RecordHighestTemp);
-			echo $status ? 'OK' : 'ERROR';
-		} catch (Exception $e) {
-			echo "Error: ".$e;
-		}
+			$consumerKey 		= 'f13aHtOr8H6P85kud4qx3Q'; 
+			$consumerSecret 	= '5RxwNk4QGmfV0Y56K6ViPTOQrWpgvjqn7lfJp5ZwQ';
+			//Access tokens "oauth_token"
+			$accessToken 		= '2164730497-HmrMmBDCJooJmQPtU3S1QOOzlXHd62xzO7VY2u1';
+			$accessTokenSecret 	= 'Sml2EmLI8YSGSlNwXxjJMImtUkV7l4zYRiz8juoLqsYBb';
+			$conditions = array("stat_name = 'highestlight'")
+
+			$highestLight = $this->DataStat->find('all', array('conditions' => $conditions,
+														'order' =>'timestamp DESC', 'limit' => 1));
+			
+			$highestLight = $highestLight[0]['highestLight']['stat_value'];
+
+			if(!empty($highestLight)){
+				try {
+					$twitter = new Twitter($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret);
+					$time = date("H:i:s");
+					$message = $time . 'The highest light level has been broken at: '. $highestLight . '.';
+					$status = $twitter->send(utf8_encode($message));
+					echo $status ? 'OK' : 'ERROR';
+				} catch (Exception $e) {
+					echo "Error: ".$e;
+				}
+			} else {
+				echo "no values";
+			}
 	}
 
-	public function LowestTempBreak($RecordLowestTemp) {
+	public function LowestLightBreak() {
 
-		try {
-			$twitter = new Twitter($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret);
-			$status = $twitter->send('Lowest recorded temperature has been broken at: '.$RecordLowestTemp);
-			echo $status ? 'OK' : 'ERROR';
-		} catch (Exception $e) {
-			echo "Error: ".$e;
-		}
+			$consumerKey 		= 'f13aHtOr8H6P85kud4qx3Q'; 
+			$consumerSecret 	= '5RxwNk4QGmfV0Y56K6ViPTOQrWpgvjqn7lfJp5ZwQ';
+			//Access tokens "oauth_token"
+			$accessToken 		= '2164730497-HmrMmBDCJooJmQPtU3S1QOOzlXHd62xzO7VY2u1';
+			$accessTokenSecret 	= 'Sml2EmLI8YSGSlNwXxjJMImtUkV7l4zYRiz8juoLqsYBb';
+			$conditions = array("stat_name = 'lowestLight'")
+
+			$lowestLight = $this->DataStat->find('all', array('conditions' => $conditions,
+														'order' =>'timestamp DESC', 'limit' => 1));
+			
+			$lowestLight = $lowestLight[0]['lowestLight']['stat_value'];
+
+			if(!empty($lowestLight)){
+				try {
+					$twitter = new Twitter($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret);
+					$time = date("H:i:s");
+					$message = $time . 'The lowest light level has been broken at: '. $lowestLight . '.';
+					$status = $twitter->send(utf8_encode($message));
+					echo $status ? 'OK' : 'ERROR';
+				} catch (Exception $e) {
+					echo "Error: ".$e;
+				}
+			} else {
+				echo "no values";
+			}
 	}
 
-	public function HighestLightBreak($RecordHighestLight) {
+	public function IntCountBreak() {
 
-		try {
-			$twitter = new Twitter($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret);
-			$status = $twitter->send('Highest recorded light level has been broken, New value: '.$RecordHighestLight);
-			echo $status ? 'OK' : 'ERROR';
-		} catch (Exception $e) {
-			echo "Error: ".$e;
-		}
-	}
+		
+			$consumerKey 		= 'f13aHtOr8H6P85kud4qx3Q'; 
+			$consumerSecret 	= '5RxwNk4QGmfV0Y56K6ViPTOQrWpgvjqn7lfJp5ZwQ';
+			//Access tokens "oauth_token"
+			$accessToken 		= '2164730497-HmrMmBDCJooJmQPtU3S1QOOzlXHd62xzO7VY2u1';
+			$accessTokenSecret 	= 'Sml2EmLI8YSGSlNwXxjJMImtUkV7l4zYRiz8juoLqsYBb';
+			$conditions = array("stat_name = 'weeklyInteractions'")
 
-	public function LowestLightBreak($RecordLowestLight) {
+			$weeklyInteractions = $this->DataStat->find('all', array('conditions' => $conditions,
+														'order' =>'timestamp DESC', 'limit' => 1));
 
-		try {
-			$twitter = new Twitter($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret);
-			$status = $twitter->send('Lowest recorded light level has been broken, New value:'.$RecordLowestLight);
-			echo $status ? 'OK' : 'ERROR';
-		} catch (Exception $e) {
-			echo "Error: ".$e;
-		}
-	}
+			$weeklyInteractions = $weeklyInteractions[0]['weeklyInteractions']['stat_value'];
 
-	public function IntCountBreak($RecordCount) {
-
-		try {
-			$twitter = new Twitter($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret);
-			$status = $twitter->send('The record amount of interactions has been broken, New count: '.$RecordCount);
-			echo $status ? 'OK' : 'ERROR';
-		} catch (Exception $e) {
-			echo "Error: ".$e;
-		}
-	}
-
-*/
-
+			if(!empty($weeklyInteractions)){
+				try {
+					$twitter = new Twitter($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret);
+					$time = date("H:i:s");
+					$message = $time . 'There has been '. $weeklyInteractions . 'Interactions this week.';
+					$status = $twitter->send(utf8_encode($message));
+					echo $status ? 'OK' : 'ERROR';
+				} catch (Exception $e) {
+					echo "Error: ".$e;
+				}
+			} else {
+				echo "no values";
+			}
+	}*/
 }
 

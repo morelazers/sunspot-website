@@ -1,0 +1,26 @@
+#titleBar{
+	background-color:#306e73;
+	color:#fff;
+	width:100%;
+	height: 50px;
+	text-align:center;
+	margin:0;
+	padding:0;
+	font-size:32px;
+	font-family:Arial;
+}
+#content{
+	background-color:#222222;
+	min-height:800px;
+	min-width:100%;
+	overflow:auto;
+}
+.main-div{
+	margin: 0 auto;
+}
+body {
+	background-color:#3b424d;
+	margin:0;
+	padding:0;
+	scrollbar-face-color: #b46868;
+}

@@ -46,7 +46,7 @@ $(document).ready(function(){
             left: move.left + 2,
             width: newWidth,
             height: newHeight
-        });
+        }, 'slow');
 
         otherusersInNewZone = $(".live-user-location.zone-" + newZone);
 
@@ -54,7 +54,7 @@ $(document).ready(function(){
 
         otherusersInNewZone.animate({
         	height: newHeight
-        });
+        }, 'slow');
 
     });
 });

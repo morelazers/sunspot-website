@@ -27,6 +27,7 @@
  * to use (in this case, /app/View/Pages/home.ctp)...
  */
 	Router::connect('/', array('controller' => 'graphs', 'action' => 'main'));
+	Router::connect('/touch/*', array('controller' => 'graphs', 'action' => 'touch'));
 
 /**
  * Load all plugin routes. See the CakePlugin documentation on

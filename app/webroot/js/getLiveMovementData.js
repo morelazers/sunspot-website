@@ -61,7 +61,7 @@ function getLiveMovement() {
         otherUsersInOldZone.animate({
 			"margin-top" : oldMove.top + (oldHeight * (usersInOldZone - 1)) - oldMove.top + 1,
         	height: oldHeight
-        });
+        }, 'slow');
 
         /* get the new height of the div by dividing by the number of users in the zone */
     	newHeight = parseInt($("#zone-" + newZone).css('height')) / usersInNewZone;
@@ -77,14 +77,14 @@ function getLiveMovement() {
             left: move.left + 2,
             width: newWidth,
             height: newHeight
-        });
+        }, 'slow');
 
         otherusersInNewZone = $(".live-user-location.zone-" + newZone);
 
         //console.log(otherusersInNewZone.length);
         otherusersInNewZone.animate({
         	height: newHeight
-        });
+        }, 'slow');
 	
     
       /* NEW MOVEMENT DISPLAY CODE */
