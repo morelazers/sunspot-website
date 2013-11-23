@@ -308,7 +308,23 @@ nav a:hover {
     width: 100%;
 }
 
-.dropdown select{
+#light-date-sel{
+  top: 180px;
+}
+
+#temp-date-sel{
+  top: 180px;
+}
+
+#light-hour-sel{
+  top: 300px;
+}
+
+#temp-hour-sel{
+  top: 300px;
+}
+
+.sidebar-dropdown select{
     color: black;
     position: absolute;
     top: 40px;
@@ -322,14 +338,14 @@ nav a:hover {
     -webkit-appearance: none;
 }
 
-.dropdown{
+/*.dropdown{
     margin-top: 40px;
     margin-left: 28px;
     width: 200px;
     height: 50px;
     background: url(../img/backarrow.png) no-repeat right;
-    z-index: 2;
-}
+    z-index: 4;
+}*/
 
 #lab-canvas{
     width: 880px;

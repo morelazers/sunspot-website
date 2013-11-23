@@ -174,10 +174,17 @@ function loadLabMovementScreen(){
         $("#hourly-chart-div").hide();
         $("#movement").hide();
         $("#chart-nav-buttons").hide();
+<<<<<<< HEAD
 		$("#charts-temp-dropdown").hide();
 		$("#charts-light-dropdown").hide();
         $("#live-temp-light-widget").hide();
 		$("#live-interaction-widget").hide();
+=======
+        $("#charts-dropdown").hide();
+        $("#charts-temp-dropdown").hide();
+        $("#charts-light-dropdown").hide();
+        $("#lab-widgets").hide();
+>>>>>>> ddba0cf83068e3b96ad7499a9a4d44cece3d0d85
         $("#switch-colour-box").hide();
         $(".live-chart").hide();
         $(".static-chart").hide();
@@ -189,14 +196,26 @@ function loadLabMovementScreen(){
         drawDailyLightChart();
         $("#hourly-chart-div").show();
         $("#chart-nav-buttons").show();
+<<<<<<< HEAD
 		$("#charts-light-dropdown").show();
 		$("#charts-dropdown").show();
+=======
+        $("#charts-dropdown").show();
+        $("#charts-light-dropdown").show();
+>>>>>>> ddba0cf83068e3b96ad7499a9a4d44cece3d0d85
     }
 
     function loadStatsTempScreen(){
         drawDailyTempChart();
+<<<<<<< HEAD
         $("#hourly-chart-div").show();
         $("#chart-nav-buttons").show();
 		$("#charts-temp-dropdown").show();
 		$("#charts-dropdown").show();
+=======
+        $("#static-temp-chart").show();
+        $("#chart-nav-buttons").show();
+        $("#charts-dropdown").show();
+        $("#charts-temp-dropdown").show();
+>>>>>>> ddba0cf83068e3b96ad7499a9a4d44cece3d0d85
     }
