@@ -1,5 +1,6 @@
 <?php
 
+
 class GraphsController extends AppController {
     
     public $uses = array(
@@ -18,8 +19,9 @@ class GraphsController extends AppController {
     public function main(){
 
     }
-	public function touch(){
-	}
+    public function touch(){
+    }
+    
     /*public function interactions(){
         
         $interactions = $this->InteractionData->find('all', array('order' => array('InteractionData.timestamp DESC')));
@@ -324,8 +326,8 @@ class GraphsController extends AppController {
             echo json_encode(array('hours' => $hours));
         }
     }
-
-   /* public function getLight($datetime){
+    /*
+    public function getLight($datetime){
         $timestamp = date("Y-m-d H:i:s", strtotime($datetime));
         $conditions = array("(DAYOFYEAR(AverageLightValue.timestamp) =  DAYOFYEAR(?))" => $timestamp,
                     "(HOUR(AverageLightValue.timestamp) = HOUR(?))" => $timestamp);
@@ -338,7 +340,8 @@ class GraphsController extends AppController {
                                 'HOUR(AverageTempValue.timestamp) = HOUR(?)' => $timestamp);
         $temp = $this->AverageTempValue->find('all', array('conditions' => $conditions));
         return $temp;
-    }*/
+    }
+    */
     public function getInteractions($datetime){
         $timestamp = date("Y-m-d H:i:s", strtotime($datetime));
         $conditions = array('DAYOFYEAR(InteractionData.timestamp) = DAYOFYEAR(?)' => $timestamp,
@@ -346,7 +349,8 @@ class GraphsController extends AppController {
         $interactions = $this->InteractionData->find('all', array('conditions' => $conditions));
         return $interactions;
     }
-    /*public function getLocations($datetime){
+    /*
+    public function getLocations($datetime){
         $timestamp = date("Y-m-d H:i:s", strtotime($datetime));
         $conditions = array('DAYOFYEAR(LocationData.timestamp) = DAYOFYEAR(?)' => $timestamp,
                                 'HOUR(LocationData.timestamp) = HOUR(?)' => $timestamp);
@@ -363,30 +367,41 @@ class GraphsController extends AppController {
             echo json_encode(array('temp' => $temp));
         }
     }
-*/
-
-	public function getInteractionData(){
-		if($this->request->is('ajax')){
-			$this->layout = 'ajax';
-			$this->autoRender = false;
-			$i = 0;
-			$interactionsReadings = array();
-			$results = array();
-			for($i = 1; $i<5; $i++){
-			$conditions = array();
-			$results = $this->InteractionData->find('first', 
-						array('conditions' => $conditions, 
-						'order' => array('InteractionData.timestamp' => 'desc')));
-				array_push($interactionsReadings, $results);
-			}
-		echo json_encode(array('interactionsReadings' => $interactionsReadings));
-		}	
-	}
-    /*public function getInteractionData(){
+    public function getLightVal(){
         if($this->request->is('ajax')){
             $this->layout = 'ajax';
             $this->autoRender = false;
-            $curDateTime = date("Y-m-d H:i:s", ($timestamp = time()));
+            $curDateTime = $this->request->data['curDateTime'];
+            $lightArray = $this->getLight($curDateTime);
+            $light = $lightArray[0]['AverageLightValue']['reading_value'];
+            echo json_encode(array('light' => $light));
+        }
+    }
+
+
+    public function getInteractionData(){
+        if($this->request->is('ajax')){
+            $this->layout = 'ajax';
+            $this->autoRender = false;
+            $i = 0;
+            $interactionsReadings = array();
+            $results = array();
+            for($i = 1; $i<5; $i++){
+            $conditions = array();
+            $results = $this->InteractionData->find('first', 
+                        array('conditions' => $conditions, 
+                        'order' => array('InteractionData.timestamp' => 'desc')));
+                array_push($interactionsReadings, $results);
+            }
+        echo json_encode(array('interactionsReadings' => $interactionsReadings));
+        }   
+    }
+
+/*    public function getInteractionData(){
+        if($this->request->is('ajax')){
+            $this->layout = 'ajax';
+            $this->autoRender = false;
+            $curDateTime = $this->request->data['curDateTime'];
             $interactions = $this->getInteractions($curDateTime);
             $interactionArray = array();
             foreach($interactions as $interaction) {
@@ -569,53 +584,45 @@ class GraphsController extends AppController {
 
         }
     }
-	
-/*
-	Author: Ryan
-*/
 
-    public function getLiveLight(){
-	if($this->request->is('ajax')){
-		$this->layout = 'ajax';
+    public function getLightValue(){
+    if($this->request->is('ajax')){
+        $this->layout = 'ajax';
         $this->autoRender = false;
-		$i = 0;
-		$lightReadings = array();
-		$results = array();
-		for($i = 1; $i < 4; $i++){
-				$conditions = array('LightValue.lab_zone = ?' => $i);
-				$results = $this->LightValue->find('first', 
-										array('conditions' => $conditions, 
-										'order' => array('LightValue.timestamp' => 'desc')));
-				if(!empty($results) ){
-					array_push($lightReadings, $results);
-				}else{
-					//print("No Light Data From Database");
-				}
-			}
-		echo json_encode(array('lightReadings' => $lightReadings));
-		}
-	}
-    public function getLiveTemp(){
-	if($this->request->is('ajax')){
-		$this->layout = 'ajax';
+        $i = 0;
+        $results = array();
+        for($i = 0; $i < 4; $i++){
+                $conditions = array('LightValue.reading_value = ?' => $i);
+                $results = $this->LightValue->find('all', 
+                                        array('conditions' => $conditions, 
+                                        'order' => array('LightValue.timestamp' => 'desc')));
+                if(!empty($results) ){
+                }else{
+                    //array_push($lightvals, $results[$i]['LightValue']);
+                    echo json_encode(array('lightvals' => $results[$i]));
+                }
+            }
+        }
+    }
+    public function getTempValue(){
+    if($this->request->is('ajax')){
+        $this->layout = 'ajax';
         $this->autoRender = false;
-		$i = 0;
-		$tempReadings = array();
-		$results = array();
-		for($i = 1; $i < 4; $i++){
-				$conditions = array('TempValue.lab_zone = ?' => $i);
-				$results = $this->TempValue->find('first', 
-										array('conditions' => $conditions, 
-										'order' => array('TempValue.timestamp' => 'desc')));
-				if(!empty($results)){
-					array_push($tempReadings, $results);
-				}else{
-					//print("No Temp Data From Database");
-				}
-			}
-		echo json_encode(array('tempReadings' => $tempReadings));
-		}
-	}  
+        $x = 0;
+        $Tempresults = array();
+        for($x = 0; $x < 4; $x++){
+            $conditions = array('TempValue.lab_zone = ?' => $x);
+            $Tempresults = $this->TempValue->find('first', 
+                                    array('conditions' => $conditions, 
+                                    'order' => array('TempValue.timestamp' => 'desc')));
+                if(!empty($Tempresults)){
+                }else{
+                    //array_push($tempvals, $Tempresults[$x]['TempValue']);
+                    echo json_encode(array('tempvals' => $Tempresults[$x]));
+                }
+            }
+        }
+    }
 
     public function getLiveSwitchPress(){
         if($this->request->is('ajax')){
@@ -806,5 +813,8 @@ class GraphsController extends AppController {
         }
     }
 }
+
+
+
 
 ?>
