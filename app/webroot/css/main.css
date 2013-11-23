@@ -427,51 +427,214 @@ nav a:hover {
     margin-top: -20px;
 }
 
-#nodeOne{
-    border-style: solid; 
-    border-color: white; 
-    border-width: 5px; 
-    border-top-left-radius: 25px;
-    margin: 5px; 
-    width: 200px; 
-    height: 200px; 
-    background-color: #C30A0A;
-    background-image:url(../app/webroot/img/Zone_1.png);
-    background-repeat: no-repeat;
-    background-position:0px 0px;
+#live-temp-light-widget{
     position: absolute;
-    left: 310px;
-    top: 30px;
+    left: -100px;
+    top:200px;
+}
+
+#overview-text{
+    position: absolute;
+    left: 1000px;
+}
+
+#live-interaction-widget{
+    position: absolute;
+    left:-100px;
+    top: 200px;
+}
+
+#nodeOne{
+        border-style: solid; 
+        border-color: #eeeeee; 
+        border-width: 5px; 
+        border-top-left-radius: 25px;
+        margin: 5px; 
+        width: 200px; 
+        height: 200px; 
+        background-color: #306e73;
+        background-image:url(../app/webroot/img/Zone_1.png);
+        background-repeat: no-repeat;
+        background-position:0px 0px;
+        position: absolute;
+        left: 310px;
+        top: 30px;
 }
 #nodeTwo{
-    border-style: solid; 
-    border-color: white; 
-    border-width: 5px; 
-    margin: 5px; 
-    width: 200px; 
-    height: 200px; 
-    background-color: #C30A0A;
-    background-image:url(../app/webroot/img/Zone_2.png);
-    background-repeat: no-repeat;
-    background-position:0px 0px;
-    position: absolute;
-    left: 510px;
-    top: 30px;
+        border-style: solid; 
+        border-color: #eeeeee; 
+        border-width: 5px; 
+        margin: 5px; 
+        width: 200px; 
+        height: 200px; 
+        background-color: #306e73;
+        background-image:url(../app/webroot/img/Zone_2.png);
+        background-repeat: no-repeat;
+        background-position:0px 0px;
+        position: absolute;
+        left: 510px;
+        top: 30px;
 }
 #nodeThree{
-    border-style: solid; 
-    border-color: white; 
-    border-width: 5px; 
-    border-top-right-radius: 25px;
-    margin: 5px; 
-    width: 200px; 
-    height: 200px; 
-    background-color: #C30A0A;
-    background-image:url(../app/webroot/img/Zone_3.png);
-    background-repeat: no-repeat;
-    background-position:0px 0px;
+        border-style: solid; 
+        border-color: #eeeeee; 
+        border-width: 5px; 
+        border-top-right-radius: 25px;
+        margin: 5px; 
+        width: 200px; 
+        height: 200px; 
+        background-color: #306e73;
+        background-image:url(../app/webroot/img/Zone_3.png);
+        background-repeat: no-repeat;
+        background-position:0px 0px;
+        position: absolute;
+        left: 710px;
+        top: 30px;
+}
+#nodeFour{
+        border-style: solid; 
+        border-color: #eeeeee; 
+        border-width: 5px; 
+        border-bottom-left-radius: 25px;
+        margin: 5px; 
+        width: 200px; 
+        height: 100px; 
+        background-color: #306e73;
+        background-image:url(../app/webroot/img/door_wid.png);
+        background-repeat: no-repeat;
+        background-position:0px 0px;
+        position: absolute;
+        left: 310px;
+        top: 230px;
+}
+#nodeFive{
+        border-style: solid; 
+        border-color: #eeeeee; 
+        border-width: 5px; 
+        margin: 5px; 
+        width: 200px; 
+        height: 100px; 
+        background-color: #306e73;
+        background-image:url(../app/webroot/img/fridge_wid.png);
+        background-repeat: no-repeat;
+        background-position:0px 0px;
+        position: absolute;
+        left: 510px;
+        top: 230px;
+}
+#nodeSix{
+        border-style: solid; 
+        border-color: #eeeeee; 
+        border-width: 5px; 
+        border-bottom-right-radius: 25px;
+        margin: 5px; 
+        width: 200px; 
+        height: 100px; 
+        background-color: #306e73;
+        background-image:url(../app/webroot/img/whiteboard_wid.png);
+        background-repeat: no-repeat;
+        background-position:0px 0px;
+        position: absolute;
+        left: 710px;
+        top: 230px;
+}
+#nodeOne:hover{
+        background-color:#ff5335;
+}
+#nodeTwo:hover{
+        background-color:#ff5335;
+}
+#nodeThree:hover{
+        background-color:#ff5335;
+}
+#nodeFour:hover{
+        background-color:#ff5335;
+}
+#nodeFive:hover{
+        background-color:#ff5335;
+}
+#nodeSix:hover{
+        background-color:#ff5335;
+}
+#T1{
+    font-family: "Arial Black", Gadget, sans-serif;
+    text-align: left;
+    color: #FFFFFF;
+    font-size: 20px;
     position: absolute;
-    left: 710px;
+    left: 30px;
+    top: 130px;
+}
+#L1{
+    font-family: "Arial Black", Gadget, sans-serif;
+    text-align: left;
+    color: #FFFFFF;
+    font-size: 20px;
+    position: absolute;
+    left: 125px;
+    top: 60px;
+}
+#T2{
+    font-family: "Arial Black", Gadget, sans-serif;
+    text-align: left;
+    color: #FFFFFF;
+    font-size: 20px;
+    position: absolute;
+    left: 125px;
+    top: 60px;
+}
+#L2{
+    font-family: "Arial Black", Gadget, sans-serif;
+    text-align: left;
+    color: #FFFFFF;
+    font-size: 20px;
+    position: absolute;
+    left: 30px;
+    top: 135px;
+}
+#T3{
+    font-family: "Arial Black", Gadget, sans-serif;
+    text-align: left;
+    color: #FFFFFF;
+    font-size: 20px;
+    position: absolute;
+    left: 30px;
+    top: 135px;
+}
+#L3{
+    font-family: "Arial Black", Gadget, sans-serif;
+    text-align: left;
+    color: #FFFFFF;
+    font-size: 20px;
+    position: absolute;
+    left: 125px;
+    top: 60px;
+}
+#D1{
+    font-family: "Arial Black", Gadget, sans-serif;
+    text-align: left;
+    color: #FFFFFF;
+    font-size: 20px;
+    position: absolute;
+    left: 130px;
+    top: 30px;
+}
+#F1{
+    font-family: "Arial Black", Gadget, sans-serif;
+    text-align: left;
+    color: #FFFFFF;
+    font-size: 20px;
+    position: absolute;
+    left: 130px;
+    top: 30px;
+}
+#W1{
+    font-family: "Arial Black", Gadget, sans-serif;
+    text-align: left;
+    color: #FFFFFF;
+    font-size: 20px;
+    position: absolute;
+    left: 130px;
     top: 30px;
 }
 

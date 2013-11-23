@@ -64,8 +64,10 @@ $(document).ready(function(){
     });
     
 	$(".overview").click(function(){
-	  hideAll();
-    stopAllLiveUpdates();
+	  	hideAll();
+	    stopAllLiveUpdates();
+	    loadLabWidgets();
+		loadInteractionWidgets();
         if($("#lab-screen").is(":visible")){
             $("#lab-sidebar").slideUp();
             $("#lab-zone-overlay").fadeOut(200);
@@ -154,7 +156,13 @@ function loadLabMovementScreen(){
         window.updateLightWidget = window.setInterval(getLiveLight, 500);
         getLiveTemp();
         window.updateTempWidget = window.setInterval(getLiveTemp, 500);
-        $("#lab-widgets").show();
+        $("#live-temp-light-widget").show();
+    }
+
+    function loadInteractionWidgets(){
+        getInteractionData();
+        window.updateInteractionWidget = window.setInterval(getInteractionData, 500);
+        $("#live-interaction-widget").show();
     }
     
     function loadLabSwitchData(){
@@ -166,6 +174,10 @@ function loadLabMovementScreen(){
         $("#hourly-chart-div").hide();
         $("#movement").hide();
         $("#chart-nav-buttons").hide();
+		$("#charts-temp-dropdown").hide();
+		$("#charts-light-dropdown").hide();
+        $("#live-temp-light-widget").hide();
+		$("#live-interaction-widget").hide();
         $("#charts-dropdown").hide();
         $("#charts-temp-dropdown").hide();
         $("#charts-light-dropdown").hide();
@@ -181,12 +193,18 @@ function loadLabMovementScreen(){
         drawDailyLightChart();
         $("#hourly-chart-div").show();
         $("#chart-nav-buttons").show();
+		$("#charts-light-dropdown").show();
+		$("#charts-dropdown").show();
         $("#charts-dropdown").show();
         $("#charts-light-dropdown").show();
     }
 
     function loadStatsTempScreen(){
         drawDailyTempChart();
+        $("#hourly-chart-div").show();
+        $("#chart-nav-buttons").show();
+		$("#charts-temp-dropdown").show();
+		$("#charts-dropdown").show();
         $("#static-temp-chart").show();
         $("#chart-nav-buttons").show();
         $("#charts-dropdown").show();

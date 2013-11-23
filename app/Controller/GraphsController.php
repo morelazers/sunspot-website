@@ -19,6 +19,8 @@ class GraphsController extends AppController {
     public function main(){
 
     }
+    public function touch(){
+    }
     
     /*public function interactions(){
         
@@ -324,8 +326,8 @@ class GraphsController extends AppController {
             echo json_encode(array('hours' => $hours));
         }
     }
-
-   /* public function getLight($datetime){
+    /*
+    public function getLight($datetime){
         $timestamp = date("Y-m-d H:i:s", strtotime($datetime));
         $conditions = array("(DAYOFYEAR(AverageLightValue.timestamp) =  DAYOFYEAR(?))" => $timestamp,
                     "(HOUR(AverageLightValue.timestamp) = HOUR(?))" => $timestamp);
@@ -339,6 +341,7 @@ class GraphsController extends AppController {
         $temp = $this->AverageTempValue->find('all', array('conditions' => $conditions));
         return $temp;
     }
+    */
     public function getInteractions($datetime){
         $timestamp = date("Y-m-d H:i:s", strtotime($datetime));
         $conditions = array('DAYOFYEAR(InteractionData.timestamp) = DAYOFYEAR(?)' => $timestamp,
@@ -346,6 +349,7 @@ class GraphsController extends AppController {
         $interactions = $this->InteractionData->find('all', array('conditions' => $conditions));
         return $interactions;
     }
+    /*
     public function getLocations($datetime){
         $timestamp = date("Y-m-d H:i:s", strtotime($datetime));
         $conditions = array('DAYOFYEAR(LocationData.timestamp) = DAYOFYEAR(?)' => $timestamp,
@@ -373,8 +377,27 @@ class GraphsController extends AppController {
             echo json_encode(array('light' => $light));
         }
     }
-*/
+
+
     public function getInteractionData(){
+        if($this->request->is('ajax')){
+            $this->layout = 'ajax';
+            $this->autoRender = false;
+            $i = 0;
+            $interactionsReadings = array();
+            $results = array();
+            for($i = 1; $i<5; $i++){
+            $conditions = array();
+            $results = $this->InteractionData->find('first', 
+                        array('conditions' => $conditions, 
+                        'order' => array('InteractionData.timestamp' => 'desc')));
+                array_push($interactionsReadings, $results);
+            }
+        echo json_encode(array('interactionsReadings' => $interactionsReadings));
+        }   
+    }
+
+/*    public function getInteractionData(){
         if($this->request->is('ajax')){
             $this->layout = 'ajax';
             $this->autoRender = false;
@@ -420,7 +443,7 @@ class GraphsController extends AppController {
             echo json_encode(array('interactions' => $interactionArray));
 
         }
-    }
+    }*/
 
     public function getMovementData(){
         if($this->request->is('ajax')){

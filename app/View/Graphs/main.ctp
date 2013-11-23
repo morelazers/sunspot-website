@@ -1,5 +1,3 @@
-
-
 <div class="back-button popout-box">
     <img src="img/backarrow.png" />
 </div>
@@ -36,21 +34,6 @@
                 
     </div>
 
-    <!-- <div id="lab-widgets">
-        <div id="nodeOne">
-            <div id="T1" class="live-widget-value">45</div>
-            <div id="L1" class="live-widget-value">78</div>
-        </div>
-        <div id="nodeTwo">
-            <div id="T2" class="live-widget-value">19</div>
-            <div id="L2" class="live-widget-value">23</div>
-        </div>
-        <div id="nodeThree">
-            <div id="T3" class="live-widget-value">39</div>
-            <div id="L3" class="live-widget-value">10</div>
-        </div>
-    </div> -->
-
     <div id="switch-colour-box">
 
     </div>
@@ -86,11 +69,6 @@
 
 <div id="stats-screen" class="slider">
 
-    <!--<div id="hourly-chart-div">
-    </div>
-
-    <div id="daily-chart-div">
-   </div>-->
     <div id="static-light-chart" class="static-chart"></div>
     <div id="static-temp-chart" class="static-chart"></div>
     
@@ -118,6 +96,33 @@
 </div>
 
 <div id="overview-screen" class="slider">
+<div id="live-temp-light-widget">
+		<div id="nodeOne">
+			<h1 id="T1"></h1>
+			<h2 id="L1"></h2>
+		</div>
+		<div id="nodeTwo">
+			<h4 id="T2"></h4>
+			<h3 id="L2"></h3>	
+		</div>
+		<div id="nodeThree">
+			<h5 id="T3"></h5>
+			<h6 id="L3"></h6 >
+		</div>
+</div>
+<div id ="live-interaction-widget">
+		<div id="nodeFour">
+			<h7 id="D1">0</h7>
+		</div>
+		<div id="nodeFive">
+			<h8 id="F1">0</h8>
+		</div>
+		<div id="nodeSix">
+			<h9 id="W1">0</h9>
+		</div> 
+</div>
+
+<div id ="overview-text">
 <h4>Our Aim: </h4>
          <p>To create a smart-lab interactive information system. Transform our existing
          <br/> lab into something that we can interact with,receiving live and on-demand data!
@@ -155,7 +160,7 @@
         class="btn btn-info">Facebook<i></i></a>
         <a href="https://twitter.com/LUISl_s" data-toggle="modal" target="_blank"
         class="btn btn-info">Twitter<i></i></a>
-
+</div>
 </div>
 
 
