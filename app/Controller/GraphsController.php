@@ -22,6 +22,58 @@ class GraphsController extends AppController {
     public function touch(){
     }
     
+    public function getAllInteractionData(){
+      if($this->request->is('ajax')){
+        $this->layout = 'ajax';
+        $this->autoRender = false;
+        
+        // get now
+        $time = time();
+        
+        $monthsToGoBack = $this->request->data['monthsToGoBack'];
+        
+        // get x months back
+        $timestamp = $time - ($monthsToGoBack * (30 * 86400));
+        // get x + 1 months back
+        $endTime = $time - (($monthsToGoBack + 1) * (30 * 86400));
+        // start date
+        $startDate = date("Y-m-d", $timestamp);
+        // end date
+        $endDate = date("Y-m-d", $endTime);
+        
+        $itemName = $this->request->data('itemName');
+        
+        /*debug($startDate);
+        debug($endDate);*/
+        
+        $conditions = array(
+          'InteractionData.timestamp BETWEEN ? and ?' => array($startDate, $endDate),
+          'InteractionData.object_name' => $itemName
+        );
+        
+        $interactions = $this->InteractionData->find('all', 
+          array(
+            'order' => array('InteractionData.timestamp DESC'),
+            'conditions' => $conditions
+          )
+        );
+        
+        //debug($interactions);
+        
+        $data = array();
+        foreach($interactions as $i){
+          $day = date('d', $i['InteractionData']['timestamp']);
+          if(!empty($data[$day])){
+            $data[$day]++;
+          } else {
+            $data[$day] = 1;
+          }
+        }
+        
+        echo json_encode(array('response' => $data));
+      }
+    }
+    
     /*public function interactions(){
         
         $interactions = $this->InteractionData->find('all', array('order' => array('InteractionData.timestamp DESC')));
@@ -378,7 +430,7 @@ class GraphsController extends AppController {
         }
     }
 
-
+  */
     public function getInteractionData(){
         if($this->request->is('ajax')){
             $this->layout = 'ajax';
@@ -816,9 +868,18 @@ public function getLiveLight(){
             echo json_encode(array('vals' => $vals));
         }
     }
-}
-
-
-
-
+    
+    public function getLiveInteractionData(){
+      if($this->request->is('ajax')){
+        $this->layout = 'ajax';
+        $this->autoRender = false;
+        $time = $this->request->data['tmpTime'];
+        $timestamp = date("Y-m-d H:i:s", ($time/1000));
+        $conditions = array("InteractionData.timestamp > ?" => $timestamp);
+        $vals = $this->InteractionData->find('all', array('conditions'=>$conditions,
+                                             'order' => 'timestamp DESC'));
+        echo json_encode(array('interaction' => $vals));
+      }
+    }
+  }
 ?>
