@@ -427,15 +427,17 @@ nav a:hover {
     margin-top: -20px;
 }
 
-#live-temp-light-widget{
-    position: absolute;
-    left: -100px;
-    top:200px;
-}
+
 
 #overview-text{
     position: absolute;
     left: 1000px;
+}
+
+#live-temp-light-widget{
+    position: absolute;
+    left: -100px;
+    top:200px;
 }
 
 #live-interaction-widget{
@@ -459,6 +461,15 @@ nav a:hover {
         position: absolute;
         left: 310px;
         top: 30px;
+}
+
+#oneT_Img {
+		background-image:url(../app/webroot/img/bulb_high.png); 
+		background-repeat: no-repeat;
+		background-position:0px 0px;
+		position: absolute;
+		left: 310px;
+		top: 30px;
 }
 #nodeTwo{
         border-style: solid; 
@@ -563,7 +574,7 @@ nav a:hover {
     font-size: 20px;
     position: absolute;
     left: 30px;
-    top: 130px;
+    top: 125px;
 }
 #L1{
     font-family: "Arial Black", Gadget, sans-serif;
@@ -572,7 +583,7 @@ nav a:hover {
     font-size: 20px;
     position: absolute;
     left: 125px;
-    top: 60px;
+    top: 50px;
 }
 #T2{
     font-family: "Arial Black", Gadget, sans-serif;
@@ -580,8 +591,8 @@ nav a:hover {
     color: #FFFFFF;
     font-size: 20px;
     position: absolute;
-    left: 125px;
-    top: 60px;
+    left: 30px;
+    top: 110px;
 }
 #L2{
     font-family: "Arial Black", Gadget, sans-serif;
@@ -589,8 +600,8 @@ nav a:hover {
     color: #FFFFFF;
     font-size: 20px;
     position: absolute;
-    left: 30px;
-    top: 135px;
+    left: 115px;
+    top: 46px;
 }
 #T3{
     font-family: "Arial Black", Gadget, sans-serif;
@@ -599,7 +610,7 @@ nav a:hover {
     font-size: 20px;
     position: absolute;
     left: 30px;
-    top: 135px;
+    top: 105px;
 }
 #L3{
     font-family: "Arial Black", Gadget, sans-serif;
@@ -607,8 +618,8 @@ nav a:hover {
     color: #FFFFFF;
     font-size: 20px;
     position: absolute;
-    left: 125px;
-    top: 60px;
+    left: 115px;
+    top: 18px;
 }
 #D1{
     font-family: "Arial Black", Gadget, sans-serif;
@@ -638,45 +649,8 @@ nav a:hover {
     top: 30px;
 }
 
-#lab-widgets{
-    display: none;
-    margin-top:100px;
-    position:absolute;
-    margin-left: 50px;
-    font-family: "Arial Black", Gadget, sans-serif;
-    text-align: left;
-    color: #FFFFFF;
-    font-size: 20px;
-
-}
-
 .live-widget-value{
     position: absolute;
-}
-
-#T1{
-    margin-left: 30px;
-    margin-top: 135px;
-}
-#L1{
-    margin-left: 125px;
-    margin-top: 60px;
-}
-#T2{
-    margin-left: 30px;
-    margin-top: 135px;
-}
-#L2{
-    margin-left: 125px;
-    margin-top: 60px;
-}
-#T3{
-    margin-left: 30px;
-    margin-top: 135px;
-}
-#L3{
-    margin-left: 125px;
-    margin-top: 60px;
 }
 
 #switch-colour-box{
@@ -861,6 +835,11 @@ nav a:hover {
 .static-chart{
   margin-left: 365px;
   padding-top: 50px;
+}
+
+#stats-interaction-chart{
+	margin-left: 365px;
+	padding-top: 50px;
 }
 
 

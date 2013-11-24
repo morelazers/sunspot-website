@@ -585,44 +585,48 @@ class GraphsController extends AppController {
         }
     }
 
-    public function getLightValue(){
-    if($this->request->is('ajax')){
-        $this->layout = 'ajax';
+public function getLiveLight(){
+	if($this->request->is('ajax')){
+		$this->layout = 'ajax';
         $this->autoRender = false;
-        $i = 0;
-        $results = array();
-        for($i = 0; $i < 4; $i++){
-                $conditions = array('LightValue.reading_value = ?' => $i);
-                $results = $this->LightValue->find('all', 
-                                        array('conditions' => $conditions, 
-                                        'order' => array('LightValue.timestamp' => 'desc')));
-                if(!empty($results) ){
-                }else{
-                    //array_push($lightvals, $results[$i]['LightValue']);
-                    echo json_encode(array('lightvals' => $results[$i]));
-                }
-            }
-        }
-    }
-    public function getTempValue(){
-    if($this->request->is('ajax')){
-        $this->layout = 'ajax';
+		$i = 0;
+		$lightReadings = array();
+		$results = array();
+		for($i = 1; $i < 4; $i++){
+				$conditions = array('LightValue.lab_zone = ?' => $i);
+				$results = $this->LightValue->find('first', 
+										array('conditions' => $conditions, 
+										'order' => array('LightValue.timestamp' => 'desc')));
+				if(!empty($results) ){
+					array_push($lightReadings, $results);
+				}else{
+					//print("No Light Data From Database");
+				}
+			}
+		echo json_encode(array('lightReadings' => $lightReadings));
+		}
+	}
+    public function getLiveTemp(){
+	if($this->request->is('ajax')){
+		$this->layout = 'ajax';
         $this->autoRender = false;
-        $x = 0;
-        $Tempresults = array();
-        for($x = 0; $x < 4; $x++){
-            $conditions = array('TempValue.lab_zone = ?' => $x);
-            $Tempresults = $this->TempValue->find('first', 
-                                    array('conditions' => $conditions, 
-                                    'order' => array('TempValue.timestamp' => 'desc')));
-                if(!empty($Tempresults)){
-                }else{
-                    //array_push($tempvals, $Tempresults[$x]['TempValue']);
-                    echo json_encode(array('tempvals' => $Tempresults[$x]));
-                }
-            }
-        }
-    }
+		$i = 0;
+		$tempReadings = array();
+		$results = array();
+		for($i = 1; $i < 4; $i++){
+				$conditions = array('TempValue.lab_zone = ?' => $i);
+				$results = $this->TempValue->find('first', 
+										array('conditions' => $conditions, 
+										'order' => array('TempValue.timestamp' => 'desc')));
+				if(!empty($results)){
+					array_push($tempReadings, $results);
+				}else{
+					//print("No Temp Data From Database");
+				}
+			}
+		echo json_encode(array('tempReadings' => $tempReadings));
+		}
+	}  
 
     public function getLiveSwitchPress(){
         if($this->request->is('ajax')){

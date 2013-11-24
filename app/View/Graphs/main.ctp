@@ -68,6 +68,11 @@
 
     <div id="static-light-chart" class="static-chart"></div>
     <div id="static-temp-chart" class="static-chart"></div>
+	<div id="stats-interaction-chart">
+		<div id="stats-interaction-fridge" class="interaction-item"></div>
+		<div id="stats-interaction-door" class="interaction-item"></div>
+		<div id="stats-interaction-whiteboard" class="interaction-item"></div>
+	</div>
     
 
     <div id="stats-sidebar" class="slider-sidebar">
@@ -76,6 +81,7 @@
                 <ul class="transparent">
                     <option value="light">Light</option>
                     <option value="temperature">Temperature</option>
+					<option value="temperature">Interactions</option>
                 </ul>
             </select>
         </div>
@@ -94,6 +100,7 @@
 <div id="overview-screen" class="slider">
 <div id="live-temp-light-widget">
 		<div id="nodeOne">
+			<div id="oneT_Img"></div>
 			<h1 id="T1"></h1>
 			<h2 id="L1"></h2>
 		</div>
@@ -103,7 +110,7 @@
 		</div>
 		<div id="nodeThree">
 			<h5 id="T3"></h5>
-			<h6 id="L3"></h6 >
+			<h6 id="L3"></h6>
 		</div>
 </div>
 <div id ="live-interaction-widget">

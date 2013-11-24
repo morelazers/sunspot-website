@@ -13,14 +13,14 @@
 					var i = 0;
 					for(i = 0; i < vals.length; i++){
 						if((vals[i]['LightValue']['lab_zone']) == 1){
-							$('#L1').html(vals[i]['LightValue']['reading_value']);
+							$('#L1').html(vals[i]['LightValue']['reading_value']).append("lx");
 						}
 						if(parseInt(vals[i]['LightValue']['lab_zone']) == 2){
-							$('#L2').html(vals[i]['LightValue']['reading_value']);
+							$('#L2').html(vals[i]['LightValue']['reading_value']).append("lx");
 					
 						}
 						if(parseInt(vals[i]['LightValue']['lab_zone']) == 3){
-							$('#L3').html(vals[i]['LightValue']['reading_value']);
+							$('#L3').html(vals[i]['LightValue']['reading_value']).append("lx");
 			
 						}
 					}

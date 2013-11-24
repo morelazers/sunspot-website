@@ -126,7 +126,9 @@ $(document).ready(function(){
             $(".day-left-button").bind("click", function() {drawHourlyTempChart(2)});
             $(".day-right-button").bind("click", function() {drawHourlyTempChart(1)});
             loadStatsTempScreen();
-        }
+        } else if (selectedOpt == "Interactions"){
+			loadStatsInteractionScreen();
+		}
     });
     
 });  
@@ -185,6 +187,7 @@ function loadLabMovementScreen(){
         $("#switch-colour-box").hide();
         $(".live-chart").hide();
         $(".static-chart").hide();
+		$("#stats-interaction-chart").hide();
     }
 
     
@@ -209,4 +212,8 @@ function loadLabMovementScreen(){
         $("#chart-nav-buttons").show();
         $("#charts-dropdown").show();
         $("#charts-temp-dropdown").show();
+    }
+	
+	function loadStatsInteractionScreen(){
+        $("#static-interaction-chart").show();
     }
