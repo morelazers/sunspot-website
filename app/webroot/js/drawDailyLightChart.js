@@ -23,15 +23,15 @@ function drawDailyLightChart(months) {
     
     
     request.done(function(data){
-        
+        //get the values
         var averageVals = data.values;
-        
+        //push each number onto the array we'll use to draw the data
         var newAverageLightVals = [];
         for (var i = 0; i <= 31; i++) {
             var result = averageVals[i];
             newAverageLightVals.push(parseInt(result));
         }
-        
+        //add each data point to the table
         var i = 1;
         for(i; i <= 31; i++){
             pastDate.setDate(currentTime.getDate() - 30 + i);

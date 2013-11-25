@@ -23,7 +23,7 @@ $(document).ready(function(){
     clearInterval(window.updateSwitch);
     clearInterval(window.updateLightWidget);
     clearInterval(window.updateTempWidget);
-	clearInterval(window.updateInteractionWidget);
+	  clearInterval(window.updateInteractionWidget);
     
     
     console.log(window.updateMovement);

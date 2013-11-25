@@ -37,6 +37,18 @@
     <div id="switch-colour-box">
 
     </div>
+    
+    <div id="live-interactions">
+      <div id="live-door-interactions" class="live-interaction-widget">
+        
+      </div>
+      <div id="live-fridge-interactions" class="live-interaction-widget">
+        
+      </div>
+      <div id="live-whiteboard-interactions" class="live-interaction-widget">
+        
+      </div>
+    </div>
 
     <!-- LIVE LIGHT CHARTS -->
     <div id="live-lab-charts">
@@ -58,6 +70,7 @@
                 <option value="movement">Movement</option>
                 <option value="light">Light</option>
                 <option value="temp">Temp</option></option>
+                <option value="swithces">Interactions</option>
                 <option value="swithces">Switches</option>
             </ul>
         </select>
@@ -68,10 +81,11 @@
 
     <div id="static-light-chart" class="static-chart"></div>
     <div id="static-temp-chart" class="static-chart"></div>
-	<div id="stats-interaction-chart">
+	<div id="stats-interaction-items">
 		<div id="stats-interaction-fridge" class="interaction-item"></div>
 		<div id="stats-interaction-door" class="interaction-item"></div>
 		<div id="stats-interaction-whiteboard" class="interaction-item"></div>
+		<div id="stats-interaction-chart" class="interaction-chart"></div>
 	</div>
     
 
@@ -81,7 +95,7 @@
                 <ul class="transparent">
                     <option value="light">Light</option>
                     <option value="temperature">Temperature</option>
-					<option value="temperature">Interactions</option>
+					          <option value="interactions">Interactions</option>
                 </ul>
             </select>
         </div>
@@ -95,10 +109,17 @@
             <select class="sidebar-select" id="temp-hour-sel"></select>
           </div>
         </div>
+        <div id="interaction-items-dropdown" class="sidebar-dropdown">
+            <select class="sidebar-select dropdown" id="interaction-item-select">
+              <option value="fridge">Fridge</option>
+              <option value="door">Door</option>
+              <option value="whiteboard">Whiteboard</option>
+            </select>
+        </div>
     </div>
 </div>
 <div id="overview-screen" class="slider">
-<div id="live-temp-light-widget">
+<!--<div id="live-temp-light-widget">
 		<div id="nodeOne">
 			<div id="oneT_Img"></div>
 			<h1 id="T1"></h1>
@@ -123,7 +144,10 @@
 		<div id="nodeSix">
 			<h9 id="W1">0</h9>
 		</div> 
-</div>
+</div>-->
+
+<a class="twitter-timeline" href="https://twitter.com/LUISl_s" data-widget-id="404626926985162752">Tweets by @LUISl_s</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 
 <div id ="overview-text">
 <h4>Our Aim: </h4>
@@ -227,6 +251,7 @@ window.onload = function(){
 
 <!-- LIVE UPDATE SCRIPTS GO BEFORE SCRIPT.JS -->
 <script src="js/getLiveMovementData.js"></script>
+<!--<script src="js/getLiveInteractionData.js"></script>-->
 <script src="js/getPastMovementData.js"></script>
 <script src="js/getLiveSwitchPress.js"></script>
 <script src="js/getTimelineData.js"></script>

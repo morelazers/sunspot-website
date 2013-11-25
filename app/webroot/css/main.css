@@ -654,7 +654,6 @@ nav a:hover {
 }
 
 #switch-colour-box{
-
     -webkit-transition:background-color 1s ease-in;  
     -moz-transition:background-color 1s ease-in;  
     -o-transition:background-color 1s ease-in;  
@@ -669,85 +668,6 @@ nav a:hover {
     display: none;
     background-color: #ffffff;
 }
-
-/*.lab-left-column{
-    height: 125px;
-    width: 244px;
-    margin-left: 4px;
-}
-
-.lab-center-column{
-    width: 379px;
-    left: 250px;
-    margin-top: -9px;
-    height: 125px;
-}
-
-.lab-right-column{
-    left: 631px;
-    height: 125px;
-    margin-top: -9px;
-    width: 244px;
-}*/
-
-/*.lab-zone{
-    position: absolute;
-    border: 2px dashed black;
-}
-
-.zone-1{
-    top: -9px;
-    height: 125px;
-    width: 244px;
-    margin-left: 4px;
-}
-
-.zone-2{
-    top: 118px;
-    height: 125px;
-    width: 244px;
-    margin-left: 4px;
-}
-
-.zone-3{
-    width: 379px;
-    left: 250px;
-    margin-top: -9px;
-    height: 125px;
-}
-
-.zone-4{
-    top: 127px;
-    width: 379px;
-    left: 250px;
-    margin-top: -9px;
-    height: 125px;
-}
-
-.zone-5{
-    left: 631px;
-    height: 125px;
-    margin-top: -9px;
-    width: 244px;
-}
-
-.zone-6{
-    left: 631px;
-    height: 125px;
-    margin-top: -9px;
-    width: 244px;
-    top: 127px;
-}
-
-#user-test{
-    position: relative;
-    height:100%;
-    width:100%;
-}
-
-.live-user-location{
-    background-image: repeating-linear-gradient(45deg, #8b0 0px, #8b0 25px, transparent 25px, transparent 50px, transparent 50px);
-}*/
 
 .lab-zone{
     position: absolute;
@@ -842,6 +762,41 @@ nav a:hover {
 	padding-top: 50px;
 }
 
+.twitter-timeline{
+  padding-top: 20px;
+  height: 450px;
+  float: left;
+}
+
+#interaction-item-select{
+  margin-top: 200px;
+  display: none;
+}
+
+#live-interactions{
+  margin-left: 365px;
+  padding-top: 100px;
+  display:none;
+}
+
+.live-interaction-widget{
+  float:left;
+  height: 100px;
+  width: 100px;
+  margin-left: 50px;
+}
+
+#live-fridge-interactions{
+  background:url(../app/webroot/img/fridge_wid.png) no-repeat left;
+}
+
+#live-door-interactions{
+  background:url(../app/webroot/img/door_wid.png) no-repeat left;
+}
+
+#live-whiteboard-interactions{
+  background:url(../app/webroot/img/whiteboard_wid.png) no-repeat left;
+}
 
 /* ==========================================================================
    Media Queries

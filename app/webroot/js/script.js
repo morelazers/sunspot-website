@@ -111,6 +111,8 @@ $(document).ready(function(){
           loadLabTempScreen();
         } else if (selectedOpt == "Switches"){
           loadLabSwitchData();
+        } else if (selectedOpt == "Interactions"){
+          loadLabInteractionData();
         }
     });
 
@@ -127,10 +129,9 @@ $(document).ready(function(){
             $(".day-right-button").bind("click", function() {drawHourlyTempChart(1)});
             loadStatsTempScreen();
         } else if (selectedOpt == "Interactions"){
-			loadStatsInteractionScreen();
-		}
+    			loadStatsInteractionScreen();
+    		}
     });
-    
 });  
 
 
@@ -151,6 +152,11 @@ function loadLabMovementScreen(){
       drawLiveTempChart();
       window.updateTemp = window.setInterval(drawLiveTempChart, 10000);
       $("#live-temp-chart").show();
+    }
+    
+    function loadLabInteractionData(){
+      window.updateInteraction = window.setInterval(getInteractionData, 1000);
+      $("#live-interactions").show();
     }
 
     function loadLabWidgets(){
@@ -176,10 +182,10 @@ function loadLabMovementScreen(){
         $("#hourly-chart-div").hide();
         $("#movement").hide();
         $("#chart-nav-buttons").hide();
-		$("#charts-temp-dropdown").hide();
-		$("#charts-light-dropdown").hide();
+		    $("#charts-temp-dropdown").hide();
+		    $("#charts-light-dropdown").hide();
         $("#live-temp-light-widget").hide();
-		$("#live-interaction-widget").hide();
+		    $("#live-interaction-widget").hide();
         $("#charts-dropdown").hide();
         $("#charts-temp-dropdown").hide();
         $("#charts-light-dropdown").hide();
@@ -187,7 +193,8 @@ function loadLabMovementScreen(){
         $("#switch-colour-box").hide();
         $(".live-chart").hide();
         $(".static-chart").hide();
-		$("#stats-interaction-chart").hide();
+		    $("#stats-interaction-chart").hide();
+		    $("#live-interactions").hide();
     }
 
     
@@ -196,8 +203,8 @@ function loadLabMovementScreen(){
         drawDailyLightChart();
         $("#hourly-chart-div").show();
         $("#chart-nav-buttons").show();
-		$("#charts-light-dropdown").show();
-		$("#charts-dropdown").show();
+    		$("#charts-light-dropdown").show();
+    		$("#charts-dropdown").show();
         $("#charts-dropdown").show();
         $("#charts-light-dropdown").show();
     }
@@ -206,8 +213,8 @@ function loadLabMovementScreen(){
         drawDailyTempChart();
         $("#hourly-chart-div").show();
         $("#chart-nav-buttons").show();
-		$("#charts-temp-dropdown").show();
-		$("#charts-dropdown").show();
+    		$("#charts-temp-dropdown").show();
+    		$("#charts-dropdown").show();
         $("#static-temp-chart").show();
         $("#chart-nav-buttons").show();
         $("#charts-dropdown").show();
@@ -215,5 +222,7 @@ function loadLabMovementScreen(){
     }
 	
 	function loadStatsInteractionScreen(){
-        $("#static-interaction-chart").show();
+        $("#static-interaction-items").show();
+        $("#interaction-item-select").show();
+        getItemInteractionData("fridge", 0);
     }
