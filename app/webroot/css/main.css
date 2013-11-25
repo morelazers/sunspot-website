@@ -168,6 +168,7 @@ nav a:hover {
     margin-left: 20px;
     margin-top: 20px;
     float: left;
+    cursor: pointer;
 }
 
 .center-popout-text{
