@@ -39,6 +39,7 @@
     </div>
     
     <div id="live-interactions">
+    <div id="live-interaction-images">
       <div id="live-door-interactions" class="live-interaction-widget">
         
       </div>
@@ -48,6 +49,13 @@
       <div id="live-whiteboard-interactions" class="live-interaction-widget">
         
       </div>
+    </div>
+      
+      
+      <!-- LIVE TWITTER FEED -->
+      <a class="twitter-timeline" href="https://twitter.com/LUISl_s" data-widget-id="404626926985162752">Tweets by @LUISl_s</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+      <!-- END LIVE TWITTER FEED -->
     </div>
 
     <!-- LIVE LIGHT CHARTS -->
@@ -119,75 +127,73 @@
     </div>
 </div>
 <div id="overview-screen" class="slider">
-<!--<div id="live-temp-light-widget">
-		<div id="nodeOne">
-			<div id="oneT_Img"></div>
-			<h1 id="T1"></h1>
-			<h2 id="L1"></h2>
-		</div>
-		<div id="nodeTwo">
-			<h4 id="T2"></h4>
-			<h3 id="L2"></h3>	
-		</div>
-		<div id="nodeThree">
-			<h5 id="T3"></h5>
-			<h6 id="L3"></h6>
-		</div>
-</div>
-<div id ="live-interaction-widget">
-		<div id="nodeFour">
-			<h7 id="D1">0</h7>
-		</div>
-		<div id="nodeFive">
-			<h8 id="F1">0</h8>
-		</div>
-		<div id="nodeSix">
-			<h9 id="W1">0</h9>
-		</div> 
-</div>-->
-
-<a class="twitter-timeline" href="https://twitter.com/LUISl_s" data-widget-id="404626926985162752">Tweets by @LUISl_s</a>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
-<div id ="overview-text">
-<h4>Our Aim: </h4>
-         <p>To create a smart-lab interactive information system. Transform our existing
-         <br/> lab into something that we can interact with,receiving live and on-demand data!
-         <br/>SCC.330 Final Year Project</p>
-
-         More Info:
-         <a href="http://www.lusi.lancs.ac.uk/OnlineCoursesHandbook/ModuleCatalogue/Module.aspx?Course=016890&Year=000113" data-toggle="modal" target="_blank" class="btn btn-info">Module Page<i></i></a>
-        <a href="http://www.scc.lancs.ac.uk" data-toggle="modal" target="_blank" 
-        class="btn btn-info">SCC Page<i></i></a>
-        <a href="http://www.infolab21.lancs.ac.uk" data-toggle="modal" target="_blank"
-        class="btn btn-info">InfoLab24 Page<i></i></a>
-        <a href="http://www.lancaster.ac.uk" data-toggle="modal" target="_blank" 
-        class="btn btn-info">Lancaster University Page<i></i></a>
-    <p>The aim of the Smart Lab System (SLS) is to turn the Software Design Studio into a smart interactive
-     lab.
-     <br>
-     In summary, the SLS shall<br>
-     - Comprise a number of web services providing climactic, environment, notification, location
-     and activity services<br>
-     - Comprise a number of consumer applications for visualizing, controlling and managing the
-     lab environment<br>
-     - Comprise consumer applications for interfacing with Facebook and Twitter to provide
-     periodic commentary on the happenings in the lab.</p>
-
-        <h4>Sun Spot and Java Programming: </h4>
-         <p>The project will be built using Sun's Spot Java Sensors. Programming
-         <br>of the sensor devices is done using NetBeans 7.4 and
-         <br>SUN Spot Java Sensors. Java, Javascript, HTML and CSS are being
-         <br>used for other parts of the project,e.g. Website, Interface etc.
-         <br/>SCC.330 Final Year Project</p>
-
-
-
-         <a href="https://www.facebook.com/luisls" data-toggle="modal" target="_blank" 
-        class="btn btn-info">Facebook<i></i></a>
-        <a href="https://twitter.com/LUISl_s" data-toggle="modal" target="_blank"
-        class="btn btn-info">Twitter<i></i></a>
-</div>
+  <div id="live-temp-light-widget">
+  		<div id="nodeOne">
+  			<div id="oneT_Img"></div>
+  			<h1 id="T1"></h1>
+  			<h2 id="L1"></h2>
+  		</div>
+  		<div id="nodeTwo">
+  			<h4 id="T2"></h4>
+  			<h3 id="L2"></h3>	
+  		</div>
+  		<div id="nodeThree">
+  			<h5 id="T3"></h5>
+  			<h6 id="L3"></h6>
+  		</div>
+  </div>
+  <div id ="live-interaction-widget">
+  		<div id="nodeFour">
+  			<h7 id="D1">0</h7>
+  		</div>
+  		<div id="nodeFive">
+  			<h8 id="F1">0</h8>
+  		</div>
+  		<div id="nodeSix">
+  			<h9 id="W1">0</h9>
+  		</div> 
+  </div>
+  
+  
+  <div id ="overview-text">
+  <h4>Our Aim: </h4>
+           <p>To create a smart-lab interactive information system. Transform our existing
+           <br/> lab into something that we can interact with,receiving live and on-demand data!
+           <br/>SCC.330 Final Year Project</p>
+  
+           More Info:
+           <a href="http://www.lusi.lancs.ac.uk/OnlineCoursesHandbook/ModuleCatalogue/Module.aspx?Course=016890&Year=000113" data-toggle="modal" target="_blank" class="btn btn-info">Module Page<i></i></a>
+          <a href="http://www.scc.lancs.ac.uk" data-toggle="modal" target="_blank" 
+          class="btn btn-info">SCC Page<i></i></a>
+          <a href="http://www.infolab21.lancs.ac.uk" data-toggle="modal" target="_blank"
+          class="btn btn-info">InfoLab24 Page<i></i></a>
+          <a href="http://www.lancaster.ac.uk" data-toggle="modal" target="_blank" 
+          class="btn btn-info">Lancaster University Page<i></i></a>
+      <p>The aim of the Smart Lab System (SLS) is to turn the Software Design Studio into a smart interactive
+       lab.
+       <br>
+       In summary, the SLS shall<br>
+       - Comprise a number of web services providing climactic, environment, notification, location
+       and activity services<br>
+       - Comprise a number of consumer applications for visualizing, controlling and managing the
+       lab environment<br>
+       - Comprise consumer applications for interfacing with Facebook and Twitter to provide
+       periodic commentary on the happenings in the lab.</p>
+  
+          <h4>Sun Spot and Java Programming: </h4>
+           <p>The project will be built using Sun's Spot Java Sensors. Programming
+           <br>of the sensor devices is done using NetBeans 7.4 and
+           <br>SUN Spot Java Sensors. Java, Javascript, HTML and CSS are being
+           <br>used for other parts of the project,e.g. Website, Interface etc.
+           <br/>SCC.330 Final Year Project</p>
+  
+  
+  
+           <a href="https://www.facebook.com/luisls" data-toggle="modal" target="_blank" 
+          class="btn btn-info">Facebook<i></i></a>
+          <a href="https://twitter.com/LUISl_s" data-toggle="modal" target="_blank"
+          class="btn btn-info">Twitter<i></i></a>
+  </div>  
 </div>
 
 

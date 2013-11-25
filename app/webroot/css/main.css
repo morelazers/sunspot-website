@@ -762,15 +762,44 @@ nav a:hover {
 	padding-top: 50px;
 }
 
+#stats-interaction-items{
+  margin-left: 365px;
+  padding-top: 50px;
+}
+
 .twitter-timeline{
-  padding-top: 20px;
+  /*padding-top: 20px;*/
   height: 450px;
   float: left;
+}
+
+#twitter-widget-0{
+  margin-top: -70px;
+  margin-left: 300px;
 }
 
 #interaction-item-select{
   margin-top: 200px;
   display: none;
+}
+
+.interaction-item{
+  padding-top: 50px;
+  height: 200px;
+  width: 110px;
+  display:none;
+}
+
+#stats-interaction-fridge{
+  background:url(/img/fridge_wid.png) no-repeat left;
+}
+
+#stats-interaction-door{
+  background:url(/img/door_wid.png) no-repeat left;
+}
+
+#stats-interaction-whiteboard{
+  background:url(/img/whiteboard_wid.png) no-repeat left;
 }
 
 #live-interactions{
@@ -780,22 +809,24 @@ nav a:hover {
 }
 
 .live-interaction-widget{
-  float:left;
   height: 100px;
   width: 100px;
-  margin-left: 50px;
+}
+
+#live-interaction-images{
+  float:left;
 }
 
 #live-fridge-interactions{
-  background:url(../app/webroot/img/fridge_wid.png) no-repeat left;
+  background:url(/img/fridge_wid.png) no-repeat left;
 }
 
 #live-door-interactions{
-  background:url(../app/webroot/img/door_wid.png) no-repeat left;
+  background:url(/img/door_wid.png) no-repeat left;
 }
 
 #live-whiteboard-interactions{
-  background:url(../app/webroot/img/whiteboard_wid.png) no-repeat left;
+  background:url(/img/whiteboard_wid.png) no-repeat left;
 }
 
 /* ==========================================================================

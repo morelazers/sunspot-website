@@ -19,6 +19,7 @@ $(document).ready(function(){
 	$(".lab").click(function(){
 	  hideAll();
 	  stopAllLiveUpdates();
+	  $("#lab-dropdown").val('movement');
         if($("#stats-screen").is(":visible")){
             $("#stats-sidebar").slideUp();
             $("#stats-screen").slideUp('medium', function(){
@@ -44,6 +45,8 @@ $(document).ready(function(){
       hideAll();
       stopAllLiveUpdates();
       drawDailyLightChart();
+      $("#stats-dropdown").val('light');
+      $("#interaction-item-select").val('fridge');
         if($("#lab-screen").is(":visible")){
             $("#lab-sidebar").slideUp();
             $("#lab-zone-overlay").fadeOut(200);
@@ -195,6 +198,8 @@ function loadLabMovementScreen(){
         $(".static-chart").hide();
 		    $("#stats-interaction-chart").hide();
 		    $("#live-interactions").hide();
+		    $(".interaction-item").hide();
+		    $("#interaction-item-select").hide();
     }
 
     
@@ -222,7 +227,7 @@ function loadLabMovementScreen(){
     }
 	
 	function loadStatsInteractionScreen(){
-        $("#static-interaction-items").show();
+        $("#stats-interaction-items").show();
         $("#interaction-item-select").show();
         getItemInteractionData("fridge", 0);
     }

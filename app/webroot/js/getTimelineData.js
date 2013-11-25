@@ -35,6 +35,9 @@ $(document).ready(function(){
 });
 
 function getItemInteractionData(name, months){
+  $(".interaction-item").hide();
+  $("#stats-interaction-" + name).show();
+  
   var request = $.ajax(window.location.origin + "/graphs/getAllInteractionData/",
   {
       type: "POST",
