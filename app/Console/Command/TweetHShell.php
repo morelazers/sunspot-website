@@ -25,8 +25,8 @@ public function tweetHShell(){
 			if(!empty($lastLightValue)){
 				try {
 					$twitter = new Twitter($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret);
-					$time = date("H:i:s");
-					$message = $time . ' Summary for the last hour: Average Temperature was: ' . $lastTempValue . 'C, Average light level was: ' . $lastLightValue . '.';
+					$time = date("H:i");
+					$message = $time . ' Summary for the last hour: Average Temperature was: ' . $lastTempValue . 'C, Average light level was: ' . $lastLightValue . 'Lux.';
 					$status = $twitter->send(utf8_encode($message));
 					echo $status ? 'OK' : 'ERROR';
 					$this->out('tweet sent successfully.');

@@ -129,16 +129,21 @@
 <div id="overview-screen" class="slider">
   <div id="live-temp-light-widget">
   		<div id="nodeOne">
-  			<div id="oneT_Img"></div>
+			<img id="oneT_Img" src="../app/webroot/img/temp_mid.png">
   			<h1 id="T1"></h1>
+			<img id="oneL_Img" src="../app/webroot/img/bulb_mid.png">
   			<h2 id="L1"></h2>
   		</div>
   		<div id="nodeTwo">
+			<img id="twoT_Img" src="../app/webroot/img/temp_mid.png">
   			<h4 id="T2"></h4>
-  			<h3 id="L2"></h3>	
+			<img id="twoL_Img" src="../app/webroot/img/bulb_mid.png">
+  			<h3 id="L2"></h3>
   		</div>
   		<div id="nodeThree">
+			<img id="threeT_Img" src="../app/webroot/img/temp_mid.png">
   			<h5 id="T3"></h5>
+			<img id="threeL_Img" src="../app/webroot/img/bulb_mid.png">
   			<h6 id="L3"></h6>
   		</div>
   </div>

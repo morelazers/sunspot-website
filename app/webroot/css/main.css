@@ -464,14 +464,6 @@ nav a:hover {
         top: 30px;
 }
 
-#oneT_Img {
-		background-image:url(../app/webroot/img/bulb_high.png); 
-		background-repeat: no-repeat;
-		background-position:0px 0px;
-		position: absolute;
-		left: 310px;
-		top: 30px;
-}
 #nodeTwo{
         border-style: solid; 
         border-color: #eeeeee; 
@@ -550,6 +542,44 @@ nav a:hover {
         left: 710px;
         top: 230px;
 }
+
+#oneT_Img {
+		position: absolute;
+		left: 20px;
+		top: 40px;
+}
+#twoT_Img {
+		position: absolute;
+		left: 20px;
+		top: 40px;
+}
+#threeT_Img {
+		position: absolute;
+		left: 20px;
+		top: 40px;
+}
+#oneL_Img {
+		position: absolute;
+		left: 80px;
+		top: 35px;
+		height: 130px;
+		width: 130xp;
+}
+#twoL_Img {
+		position: absolute;
+		left: 80px;
+		top: 35px;
+		height: 130px;
+		width: 130xp;
+}
+#threeL_Img {
+		position: absolute;
+		left: 80px;
+		top: 35px;
+		height: 130px;
+		width: 130xp;
+}
+
 #nodeOne:hover{
         background-color:#ff5335;
 }
@@ -568,6 +598,7 @@ nav a:hover {
 #nodeSix:hover{
         background-color:#ff5335;
 }
+
 #T1{
     font-family: "Arial Black", Gadget, sans-serif;
     text-align: left;
@@ -583,7 +614,7 @@ nav a:hover {
     color: #FFFFFF;
     font-size: 20px;
     position: absolute;
-    left: 125px;
+    left: 115px;
     top: 50px;
 }
 #T2{
