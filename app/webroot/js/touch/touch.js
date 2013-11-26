@@ -1,17 +1,25 @@
 $(document).ready(function(){ //DOM Ready
 
+	$('#bin').shapeshift({
+		enableTrash: true,
+		minHeight: 200
+	});
+
 	$('.item-list').shapeshift({
-		animateOnInit: true
+		animateOnInit: true,
+		minHeight: 200
 	});
 
 	$('.main').shapeshift({
 		minHeight: 600,
-		align: "center"
+		align: "left",
+		minColumns: 6,
+		colWidth: 300
 	});
 
-	var containers = $(".main");
+	var containers = $(".container");
 
-	$(".main div").draggable();
+	$(".in-grid").draggable();
 
 	containers.on("ss-added", function(){
 		var mainAreaDivs = $(".main div");

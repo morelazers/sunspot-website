@@ -1,39 +1,83 @@
-.list-item{
-	/*height: 200px;
-	width: 200px;*/
-	margin-right: 10px;
-	margin-top: 10px;
-	margin-left: 10px;
-	margin-bottom: 10px;
-	/*float:left;*/
-	background-color: blue;
-	position: absolute;
+/* BIN */
+#bin {
+	left: 5%;
+	width: 5%;
+	height: 200px;
+	border: 1px solid red;
+	position: relative;
+	float: left;
 }
 
+/* TOP ITEM LIST */
 .item-list {
+  width: 80%;
+  margin-left: 5%;
+  border: 2px dashed black;
   position: relative;
-  width: 100%;
+  float: left;
 }
 
-.item-list div {
-  height: 50px;
-  position: absolute;
-  width: 50px;
-  background-color: black;
-}
-
+/* MAIN DIV */
 .main{
 	top: 100px;
 	width: 90%;
 	margin-left: 5%;
 	height: 600px;
 	background-color: blue;
+	border: 2px dashed black;
 	position: relative;
 }
 
-.main div{
+/* ALL GRID ELEMENTS */
+.in-grid{
 	position: absolute;
-	height: 150px;
-	width: 150px;
-	background-color: black;
 }
+
+/* BEGIN MOVEMENT CSS */
+#movement{
+	height: 298px;
+	width: 888px;
+	background: #CCC;
+	background-image: url(../../img/lab.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+#movement[data-ss-colspan='3'] { width: 888px; }
+/* END MOVEMENT CSS */
+
+
+/* SWITCHBOX */
+#switch-colour-box{
+    -webkit-transition:background-color 1s ease-in;  
+    -moz-transition:background-color 1s ease-in;  
+    -o-transition:background-color 1s ease-in;  
+    transition:background-color 1s ease-in;  
+    height: 300px;
+    width: 300px;
+    border: 5px solid #3B424D;
+    background-color: #ffffff;
+}
+
+/* BEGIN LIVE INTERACTIONS CSS */
+.live-interaction-widget{
+  height: 100px;
+  width: 100px;
+}
+
+#live-interaction-images{
+  float:left;
+}
+
+#live-fridge-interactions{
+  background:url(/img/fridge_wid.png) no-repeat left;
+}
+
+#live-door-interactions{
+  background:url(/img/door_wid.png) no-repeat left;
+}
+
+#live-whiteboard-interactions{
+  background:url(/img/whiteboard_wid.png) no-repeat left;
+}
+/* END LIVE INTERACTIONS CSS */

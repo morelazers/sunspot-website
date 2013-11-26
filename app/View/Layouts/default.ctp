@@ -21,13 +21,13 @@
 <html>
 	<head>
 	    <link rel="stylesheet" href="css/normalize.css">
-	    <link rel="stylesheet" href="css/main.css">
+	    <!-- <link rel="stylesheet" href="css/main.css"> -->
 	<title>
 		LUIS
 	</title>
 	<?php
 
-		echo $this->Html->css('main');
+		/*echo $this->Html->css('main');*/
 		echo $this->Html->css('normalize');
 
 		echo $this->fetch('css');
