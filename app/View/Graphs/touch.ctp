@@ -63,7 +63,7 @@
 <script src="js/vendor/jquery-1.10.2.min.js"></script>
 <script src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 
-<!-- <script src="js/touch/jquery.gridster.min.js"></script> -->
+
 
 <script src="js/vendor/jquery-1.10.2.min.js"></script>
 <script src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
@@ -87,8 +87,10 @@
 <!-- <script src="js/script.js"></script> -->
 <script src="js/test.js"></script>
 
+<script src="js/touch/hammer.js"></script>
 <script src="js/touch/touchpunch.js"></script>
 <script src="js/touch/jquery.shapeshift.js"></script>
+<script src="js/touch/jquery.gridster.min.js"></script>
 <script src="js/touch/touch.js"></script>
 
 <script>

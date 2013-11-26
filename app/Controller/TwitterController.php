@@ -8,7 +8,7 @@ class TwitterController extends AppController {
 
 	public $uses = array('FollowerId', 'AverageLightValue','AverageTempValue','DataStat', 'Actuators');
 
-		public function getTweets(){
+	/*	public function getTweets(){
 
 			 $consumerKey 		= 'f13aHtOr8H6P85kud4qx3Q'; 
 			 $consumerSecret 	= '5RxwNk4QGmfV0Y56K6ViPTOQrWpgvjqn7lfJp5ZwQ';
@@ -90,14 +90,14 @@ class TwitterController extends AppController {
 					$lasttime = $lastrecord[0]['InteractionData']['timestamp'];
 					break;
 			}*/
-			$msg = "Last " . $requested . " value was " . $lastvalue . " at " . $lasttime;
+	/*		$msg = "Last " . $requested . " value was " . $lastvalue . " at " . $lasttime;
 			$options = array(
 						"user_id" => $userID,
 						"text" => utf8_encode($msg)); // .$web_enc
 			$twitter->request("direct_messages/new", $options);
 	}
 
-	/*public function sendHourTweet(){
+	public function sendHourTweet(){
 
 			$consumerKey 		= 'f13aHtOr8H6P85kud4qx3Q'; 
 			$consumerSecret 	= '5RxwNk4QGmfV0Y56K6ViPTOQrWpgvjqn7lfJp5ZwQ';
@@ -129,6 +129,7 @@ class TwitterController extends AppController {
 			}
 	}
 	
+	*/
 	public function inDB($id){
 		$condition = array(
 					'followerID = ?' => $id
@@ -162,8 +163,11 @@ class TwitterController extends AppController {
 		$requestMethod = 'GET'; //type of method to be used 'GET' or 'POST', 
 
 		$followers = $connection->cachedRequest('followers/ids', array('user_id' => '2164730497')); //get followers through cachedRequest function(twitter.class.php)
+		
+		//$resultfollowers = json_decode($followers, true); 
+		//$resultfollowers = (array) json_decode($followers);
 		debug($followers);
-		foreach($followers['ids'] as $val){
+		foreach($resultfollowers['ids'] as $val){
 			if($this->inDB($val)==false){
 				$record = Array( 'FollowerId' => 
 						Array(
@@ -182,7 +186,7 @@ class TwitterController extends AppController {
 			}
 	}
 
-	public function sendDailyTweet() {
+	/*public function sendDailyTweet() {
 
 			$consumerKey 		= 'f13aHtOr8H6P85kud4qx3Q'; 
 			$consumerSecret 	= '5RxwNk4QGmfV0Y56K6ViPTOQrWpgvjqn7lfJp5ZwQ';

@@ -7,15 +7,19 @@ $(document).ready(function(){ //DOM Ready
 
 	$('.item-list').shapeshift({
 		animateOnInit: true,
-		minHeight: 200
+		minHeight: 200,
+		align: "left",
+		colWidth: 310
 	});
 
 	$('.main').shapeshift({
 		minHeight: 600,
 		align: "left",
 		minColumns: 6,
-		colWidth: 300
+		colWidth: 310
 	});
+	
+	$(".in-grid").gridster(); 
 
 	var containers = $(".container");
 
