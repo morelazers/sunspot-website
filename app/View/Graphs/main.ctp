@@ -244,7 +244,7 @@ window.onload = function(){
 
 
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script> -->
 <script src="js/vendor/jquery-1.10.2.min.js"></script>
 <script src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -258,7 +258,7 @@ window.onload = function(){
 <!-- LIVE UPDATE SCRIPTS GO BEFORE SCRIPT.JS -->
 <script src="js/getLiveMovementData.js"></script>
 <!--<script src="js/getLiveInteractionData.js"></script>-->
-<script src="js/getPastMovementData.js"></script>
+<!-- <script src="js/getPastMovementData.js"></script> -->
 <script src="js/getLiveSwitchPress.js"></script>
 <script src="js/getTimelineData.js"></script>
 <script src="js/TempLightWid.js"></script> 
