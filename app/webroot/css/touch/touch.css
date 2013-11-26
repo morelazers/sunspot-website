@@ -1,0 +1,39 @@
+.list-item{
+	/*height: 200px;
+	width: 200px;*/
+	margin-right: 10px;
+	margin-top: 10px;
+	margin-left: 10px;
+	margin-bottom: 10px;
+	/*float:left;*/
+	background-color: blue;
+	position: absolute;
+}
+
+.item-list {
+  position: relative;
+  width: 100%;
+}
+
+.item-list div {
+  height: 50px;
+  position: absolute;
+  width: 50px;
+  background-color: black;
+}
+
+.main{
+	top: 100px;
+	width: 90%;
+	margin-left: 5%;
+	height: 600px;
+	background-color: blue;
+	position: relative;
+}
+
+.main div{
+	position: absolute;
+	height: 150px;
+	width: 150px;
+	background-color: black;
+}
