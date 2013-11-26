@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="css/main.css">
+
 <div class="back-button popout-box">
     <img src="img/backarrow.png" />
 </div>
