@@ -7,6 +7,7 @@ $(document).ready(function(){
 	window.updateLightWidget = window.setInterval(getLiveLight, 500);
 	window.updateTempWidget = window.setInterval(getLiveTemp, 500);
 	window.updateInteractionWidget = window.setInterval(getInteractionData, 500);
+	window.updateActuatorWidget = window.setInterval(getActuatorData, 500);
   
 
   
@@ -24,6 +25,7 @@ $(document).ready(function(){
     clearInterval(window.updateLightWidget);
     clearInterval(window.updateTempWidget);
 	  clearInterval(window.updateInteractionWidget);
+	  clearInterval(window.updateActuatorWidget);
     
     
     console.log(window.updateMovement);

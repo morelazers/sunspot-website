@@ -10,6 +10,7 @@ class GraphsController extends AppController {
         'AverageTempValue',
         'InteractionData',
         'LocationData',
+		'Actuators',
         'SpotColour'
     );
 
@@ -446,6 +447,24 @@ class GraphsController extends AppController {
                 array_push($interactionsReadings, $results);
             }
         echo json_encode(array('interactionsReadings' => $interactionsReadings));
+        }   
+    }
+	
+	public function getActuatorData(){
+        if($this->request->is('ajax')){
+            $this->layout = 'ajax';
+            $this->autoRender = false;
+            $i = 0;
+            $actuatorReadings = array();
+            $results = array();
+            for($i = 1; $i<5; $i++){
+            $conditions = array();
+            $results = $this->Actuators->find('first', 
+                        array('conditions' => $conditions, 
+                        'order' => array('Actuators.id' => 'desc')));
+                array_push($actuatorReadings, $results);
+            }
+        echo json_encode(array('actuatorReadings' => $actuatorReadings));
         }   
     }
 

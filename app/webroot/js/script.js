@@ -71,6 +71,7 @@ $(document).ready(function(){
 	    stopAllLiveUpdates();
 	    loadLabWidgets();
 		loadInteractionWidgets();
+		loadActuatorWidgets();
         if($("#lab-screen").is(":visible")){
             $("#lab-sidebar").slideUp();
             $("#lab-zone-overlay").fadeOut(200);
@@ -175,6 +176,12 @@ function loadLabMovementScreen(){
         window.updateInteractionWidget = window.setInterval(getInteractionData, 500);
         $("#live-interaction-widget").show();
     }
+	
+	function loadActuatorWidgets(){
+        getActuatorData();
+        window.updateActuatorWidget = window.setInterval(getActuatorData, 500);
+        $("#live-usb-widget").show();
+    }
     
     function loadLabSwitchData(){
         window.updateSwitch = window.setInterval(getLiveSwitchPress, 500);
@@ -189,6 +196,7 @@ function loadLabMovementScreen(){
 		    $("#charts-light-dropdown").hide();
         $("#live-temp-light-widget").hide();
 		    $("#live-interaction-widget").hide();
+			$("#live-usb-widget").hide();
         $("#charts-dropdown").hide();
         $("#charts-temp-dropdown").hide();
         $("#charts-light-dropdown").hide();

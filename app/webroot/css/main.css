@@ -438,12 +438,21 @@ nav a:hover {
 #live-temp-light-widget{
     position: absolute;
     left: -100px;
-    top:200px;
+    top: 200px;
 }
-
 #live-interaction-widget{
     position: absolute;
-    left:-100px;
+    left: -100px;
+    top: 200px;
+}
+#touch_live-interaction-widget{
+    position: absolute;
+    left: 10px;
+    top: 60px;
+}
+#live-usb-widget{
+    position: absolute;
+    left: -100px;
     top: 200px;
 }
 
@@ -499,14 +508,10 @@ nav a:hover {
         border-style: solid; 
         border-color: #eeeeee; 
         border-width: 5px; 
-        border-bottom-left-radius: 25px;
         margin: 5px; 
         width: 200px; 
         height: 100px; 
         background-color: #306e73;
-        background-image:url(../app/webroot/img/door_wid.png);
-        background-repeat: no-repeat;
-        background-position:0px 0px;
         position: absolute;
         left: 310px;
         top: 230px;
@@ -519,9 +524,6 @@ nav a:hover {
         width: 200px; 
         height: 100px; 
         background-color: #306e73;
-        background-image:url(../app/webroot/img/fridge_wid.png);
-        background-repeat: no-repeat;
-        background-position:0px 0px;
         position: absolute;
         left: 510px;
         top: 230px;
@@ -530,17 +532,91 @@ nav a:hover {
         border-style: solid; 
         border-color: #eeeeee; 
         border-width: 5px; 
+        margin: 5px; 
+        width: 200px; 
+        height: 100px; 
+        background-color: #306e73;
+        position: absolute;
+        left: 710px;
+        top: 230px;
+}
+#touch_nodeFour{
+        border-style: solid; 
+        border-color: #eeeeee; 
+        border-width: 5px; 
+        border-top-left-radius: 25px;
+		border-top-right-radius: 25px;
+        margin: 5px; 
+        width: 100px; 
+        height: 200px; 
+        background-color: #306e73;
+        position: absolute;
+        left: 0px;
+        top: 10px;
+}
+#touch_nodeFive{
+        border-style: solid; 
+        border-color: #eeeeee; 
+        border-width: 5px; 
+        margin: 5px; 
+        width: 100px; 
+        height: 200px; 
+        background-color: #306e73;
+        position: absolute;
+        left: 0px;
+        top: 210px;
+}
+#touch_nodeSix{
+        border-style: solid; 
+        border-color: #eeeeee; 
+        border-width: 5px; 
+        border-bottom-left-radius: 25px;
+		border-bottom-right-radius: 25px;
+        margin: 5px; 
+        width: 100px; 
+        height: 200px; 
+        background-color: #306e73;
+        position: absolute;
+        left: 0px;
+        top: 410px;
+}
+#nodeSeven{
+        border-style: solid; 
+        border-color: #eeeeee; 
+        border-width: 5px; 
+        border-bottom-left-radius: 25px;
+        margin: 5px; 
+        width: 200px; 
+        height: 100px; 
+        background-color: #306e73;
+        position: absolute;
+        left: 310px;
+        top: 330px;
+}
+#nodeEight{
+        border-style: solid; 
+        border-color: #eeeeee; 
+        border-width: 5px; 
+        margin: 5px; 
+        width: 200px; 
+        height: 100px; 
+        background-color: #306e73;
+        position: absolute;
+        left: 510px;
+        top: 330px;
+}
+#nodeNine{
+        border-style: solid; 
+        border-color: #eeeeee; 
+        border-width: 5px; 
         border-bottom-right-radius: 25px;
         margin: 5px; 
         width: 200px; 
         height: 100px; 
         background-color: #306e73;
-        background-image:url(../app/webroot/img/whiteboard_wid.png);
-        background-repeat: no-repeat;
-        background-position:0px 0px;
         position: absolute;
         left: 710px;
-        top: 230px;
+        top: 330px;
 }
 
 #oneT_Img {
@@ -579,6 +655,57 @@ nav a:hover {
 		height: 130px;
 		width: 130xp;
 }
+#door_Img {
+		position: absolute;
+		left: 70px;
+		top: 05px;
+}
+#fridge_Img {
+		position: absolute;
+		left: 70px;
+		top: 05px;
+}
+#whiteboard_Img {
+		position: absolute;
+		left: 60px;
+		top: 05px;
+}
+#touch_door_Img {
+		position: absolute;
+		left: 15px;
+		top: 60px;
+}
+#touch_fridge_Img {
+		position: absolute;
+		left: 15px;
+		top: 60px;
+}
+#touch_whiteboard_Img {
+		position: absolute;
+		left: 10px;
+		top: 60px;
+}
+#glove_Img {
+		position: absolute;
+		left: 55px;
+		top: 05px;
+		height: 90px;
+		width: 90xp;
+}
+#mini_fridge_Img {
+		position: absolute;
+		left: 45px;
+		top: 05px;
+		height: 90px;
+		width: 90xp;
+}
+#fan_Img {
+		position: absolute;
+		left: 55px;
+		top: 05px;
+		height: 90px;
+		width: 90xp;
+}
 
 #nodeOne:hover{
         background-color:#ff5335;
@@ -598,6 +725,24 @@ nav a:hover {
 #nodeSix:hover{
         background-color:#ff5335;
 }
+#touch_nodeFour:hover{
+        background-color:#ff5335;
+}
+#touch_nodeFive:hover{
+        background-color:#ff5335;
+}
+#touch_nodeSix:hover{
+        background-color:#ff5335;
+}
+#nodeSeven:hover{
+        background-color:#ff5335;
+}
+#nodeEight:hover{
+        background-color:#ff5335;
+}
+#nodeNine:hover{
+        background-color:#ff5335;
+}
 
 #T1{
     font-family: "Arial Black", Gadget, sans-serif;
@@ -614,7 +759,7 @@ nav a:hover {
     color: #FFFFFF;
     font-size: 20px;
     position: absolute;
-    left: 115px;
+    left: 105px;
     top: 50px;
 }
 #T2{
@@ -632,7 +777,7 @@ nav a:hover {
     color: #FFFFFF;
     font-size: 20px;
     position: absolute;
-    left: 115px;
+    left: 105px;
     top: 46px;
 }
 #T3{
@@ -650,35 +795,8 @@ nav a:hover {
     color: #FFFFFF;
     font-size: 20px;
     position: absolute;
-    left: 115px;
+    left: 105px;
     top: 18px;
-}
-#D1{
-    font-family: "Arial Black", Gadget, sans-serif;
-    text-align: left;
-    color: #FFFFFF;
-    font-size: 20px;
-    position: absolute;
-    left: 130px;
-    top: 30px;
-}
-#F1{
-    font-family: "Arial Black", Gadget, sans-serif;
-    text-align: left;
-    color: #FFFFFF;
-    font-size: 20px;
-    position: absolute;
-    left: 130px;
-    top: 30px;
-}
-#W1{
-    font-family: "Arial Black", Gadget, sans-serif;
-    text-align: left;
-    color: #FFFFFF;
-    font-size: 20px;
-    position: absolute;
-    left: 130px;
-    top: 30px;
 }
 
 .live-widget-value{

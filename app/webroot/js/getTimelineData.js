@@ -8,20 +8,34 @@
       });
       request.done(function(data){
         var vals = data.interactionsReadings;
-        console.log(vals);
         var i = 0;
-        var white = 0;
-        var door = 0;
-        var fridge = 0;
         for(i = 0; i < vals.length; i++){
-        	if((vals[i]['InteractionData']['object_name']) == "whiteboard"){
-        		$('#W1').html(white+1);
+        	if((vals[i]['InteractionData']['object_name']) == "door"){
+				document.getElementById("touch_fridge_Img").src="../app/webroot/img/fridge_wid.png";
+				document.getElementById("touch_whiteboard_Img").src="../app/webroot/img/whiteboard_wid.png";
+				document.getElementById("fridge_Img").src="../app/webroot/img/fridge_wid.png";
+				document.getElementById("whiteboard_Img").src="../app/webroot/img/whiteboard_wid.png";
+				
+				document.getElementById("touch_door_Img").src="../app/webroot/img/door_wid_glow.png";
+				document.getElementById("door_Img").src="../app/webroot/img/door_wid_glow.png";
         	}
         	if((vals[i]['InteractionData']['object_name']) == "fridge"){
-        		$('#F1').html(fridge+1);
+				document.getElementById("touch_whiteboard_Img").src="../app/webroot/img/whiteboard_wid.png";
+        		document.getElementById("touch_door_Img").src="../app/webroot/img/door_wid.png";
+				document.getElementById("whiteboard_Img").src="../app/webroot/img/whiteboard_wid.png";
+				document.getElementById("door_Img").src="../app/webroot/img/door_wid.png";
+				
+				document.getElementById("touch_fridge_Img").src="../app/webroot/img/fridge_wid_glow.png";
+				document.getElementById("fridge_Img").src="../app/webroot/img/fridge_wid_glow.png";
         	}
-        	if((vals[i]['InteractionData']['object_name']) == "door"){
-        		$('#D1').html(door+1);
+        	if((vals[i]['InteractionData']['object_name']) == "whiteboard"){
+				document.getElementById("door_Img").src="../app/webroot/img/door_wid.png";
+				document.getElementById("fridge_Img").src="../app/webroot/img/fridge_wid.png";
+				document.getElementById("touch_door_Img").src="../app/webroot/img/door_wid.png";
+				document.getElementById("touch_fridge_Img").src="../app/webroot/img/fridge_wid.png";
+				
+				document.getElementById("touch_whiteboard_Img").src="../app/webroot/img/whiteboard_wid_glow.png";
+				document.getElementById("whiteboard_Img").src="../app/webroot/img/whiteboard_wid_glow.png";
         	}
         }
       });     

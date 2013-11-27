@@ -151,13 +151,35 @@
   </div>
   <div id ="live-interaction-widget">
   		<div id="nodeFour">
-  			<h7 id="D1">0</h7>
+		<img id="door_Img" src="../app/webroot/img/door_wid.png">
   		</div>
   		<div id="nodeFive">
-  			<h8 id="F1">0</h8>
+		<img id="fridge_Img" src="../app/webroot/img/fridge_wid.png">
   		</div>
   		<div id="nodeSix">
-  			<h9 id="W1">0</h9>
+		<img id="whiteboard_Img" src="../app/webroot/img/whiteboard_wid.png">
+  		</div> 
+  </div>
+  <div id ="touch_live-interaction-widget">
+  		<div id="touch_nodeFour">
+		<img id="touch_door_Img" src="../app/webroot/img/door_wid.png">
+  		</div>
+  		<div id="touch_nodeFive">
+		<img id="touch_fridge_Img" src="../app/webroot/img/fridge_wid.png">
+  		</div>
+  		<div id="touch_nodeSix">
+		<img id="touch_whiteboard_Img" src="../app/webroot/img/whiteboard_wid.png">
+  		</div> 
+  </div>
+  <div id ="live-usb-widget">
+		<div id="nodeSeven">
+		<img id="glove_Img" src="../app/webroot/img/usb_gloves.png">
+  		</div>
+  		<div id="nodeEight">
+		<img id="mini_fridge_Img" src="../app/webroot/img/usb_fridge.png">
+  		</div>
+  		<div id="nodeNine">
+		<img id="fan_Img" src="../app/webroot/img/usb_fan.png">
   		</div> 
   </div>
   
@@ -268,7 +290,8 @@ window.onload = function(){
 <!-- <script src="js/getPastMovementData.js"></script> -->
 <script src="js/getLiveSwitchPress.js"></script>
 <script src="js/getTimelineData.js"></script>
-<script src="js/TempLightWid.js"></script> 
+<script src="js/TempLightWid.js"></script>
+<script src="js/getActuatorData.js"></script> 
 <script src="js/liveCharts.js"></script>
 <script src="js/stopAllLiveUpdates.js"></script>
 <script src="js/script.js"></script>
