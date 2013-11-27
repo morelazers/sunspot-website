@@ -1,13 +1,14 @@
-/* BIN */
-#bin {
-	left: 5%;
-	width: 10%;
-	height: 200px;
-	border: 1px solid red;
-	position: relative;
-	float: left;
+.grid-item{
+	border: 2px solid green;
+	height: auto;
+	width: auto;
 }
 
+/*.gridster .grid-item[data-sizex="1"]{
+	height: 300px;
+	width: 300px;
+}
+*/
 /* TOP ITEM LIST */
 .item-list {
   width: 80%;
@@ -40,8 +41,6 @@
 	background-repeat: no-repeat;
 	background-size: contain;
 }
-
-#movement[data-ss-colspan='3'] { width: 888px; }
 /* END MOVEMENT CSS */
 
 

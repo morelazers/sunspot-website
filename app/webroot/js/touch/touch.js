@@ -1,61 +1,35 @@
+var gridster
+
 $(document).ready(function(){ //DOM Ready
 
-	$('#bin').shapeshift({
-		enableTrash: true,
-		minHeight: 200
-	});
-
-	$('.item-list').shapeshift({
-		animateOnInit: true,
-		minHeight: 200,
-		align: "left",
-		colWidth: 310
-	});
-
-	$('.main').shapeshift({
-		minHeight: 600,
-		align: "left",
-		minColumns: 6,
-		colWidth: 310
-	});
-	
-	$(".in-grid").gridster(); 
-
-	var containers = $(".container");
-
-	$(".in-grid").draggable();
-
-	containers.on("ss-added", function(){
-		var mainAreaDivs = $(".main div");
-		var noInMainArea = mainAreaDivs.length;
-		console.log(noInMainArea);
-	});
-
-	/*var options = {
-		widget_selector: $(".gridster div"),
+	gridster = $(".gridster > ul").gridster({
         widget_margins: [10, 10],
-        widget_base_dimensions: [140, 140],
-        min_cols: 10
-    }
+        widget_base_dimensions: [300, 300]
+    }).data('gridster');
 
-    var divs = [
-    	'<div class="list-item">SOMETHING</div>',
-    	'<div class="list-item">SOMETHING ELSE</div>',
-    	'<div class="list-item">SOMETHING TOO</div>',
-    	'<div class="list-item">SOMETHING BREAK</div>',
-    	'<div class="list-item">SOMETHING HGUEHUE</div>'
-    ];
-
+	addMovementWidget();
+	addSwitchWidget();
+	addInteractionWidget();
+	addLiveChartsWidget();
 	
-
-	var gridster = $(".gridster div").gridster().data('gridster');
-
-    for(i = 0; i < divs.length; i++){
-    	gridster.add_widget(divs[i], 1, 1, i+1, 1);
-    }
-
-    $(".gridster div").gridster(options);
-
-    $(".list-item").css('position', 'relative');*/
-    
 });
+
+function addMovementWidget(){
+	gridster.add_widget('<li><div id="movement" class="grid-item"><div id="lab-zone-overlay"><div id="live-user-location-zones"><div id="zone-1" class="lab-zone zone-1"></div><div id="zone-2" class="lab-zone zone-2"></div><div id="zone-3" class="lab-zone zone-3"></div><div id="zone-4" class="lab-zone zone-4"></div><div id="zone-5" class="lab-zone zone-5"></div><div id="zone-6" class="lab-zone zone-6"></div><div id="user-test" class="live-user-location zone-1"></div></div></div></div></li>', 3, 1)
+	.resizable();
+}
+
+function addSwitchWidget(){
+	gridster.add_widget('<li><div id="switch-colour-box" class="grid-item"></div></li>')
+	.resizable();
+}
+
+function addInteractionWidget(){
+	gridster.add_widget('<li><div id="live-interactions" class="grid-item"><div id="live-interaction-images"><div id="live-door-interactions" class="live-interaction-widget"></div><div id="live-fridge-interactions" class="live-interaction-widget"></div><div id="live-whiteboard-interactions" class="live-interaction-widget"></div></div></li>', 1, 1)
+	.resizable();
+}
+
+function addLiveChartsWidget(){
+	gridster.add_widget('<div id="live-lab-charts"><div id="live-light-con"><div id="live-light-chart" class="live-chart"></div></div><div id="live-temp-con"><div id="live-temp-chart" class="live-chart"></div></div></div>')
+	.resizable();
+}
