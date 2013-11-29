@@ -5,7 +5,7 @@ function drawLiveLightChart(){
         type: "POST",
         data: {tmpTime : tmpTime},
         dataType: 'json',
-        async: false
+        async: true
     });
     request.done(function(data){
         var vals = data.vals;
@@ -29,13 +29,14 @@ function drawLiveLightChart(){
             }
         }
         var options = {
+            'backgroundColor': 'transparent',
             title: 'Live Chart From ' + liveTime.toString(),
             vAxis: {title: 'Value (Lux)',
                     minValue: 0,
                     maxValue: 100},
             hAxis: {title: 'Time',
                     showTextEvery: 10},
-            width: 800, height: 400,
+            width: 1600, height: 600,
             pointSize: 5
         };
         var chart = new google.visualization.LineChart(document.getElementById('live-light-chart'));
@@ -49,7 +50,7 @@ function drawLiveTempChart(){
         type: "POST",
         data: {tmpTime : tmpTime},
         dataType: 'json',
-        async: false
+        async: true
     });
     request.done(function(data){
         var vals = data.vals;
@@ -73,13 +74,14 @@ function drawLiveTempChart(){
             }
         }
         var options = {
+            'backgroundColor': 'transparent',
             title: 'Live Chart From ' + liveTime.toString(),
             vAxis: {title: 'Value (Degrees C)',
                     minValue: 0,
-                    maxValue: 100},
+                    maxValue: 50},
             hAxis: {title: 'Time',
                     showTextEvery: 10},
-            width: 800, height: 400,
+            width: 1600, height: 600,
             pointSize: 5
         };
         var chart = new google.visualization.LineChart(document.getElementById('live-temp-chart'));

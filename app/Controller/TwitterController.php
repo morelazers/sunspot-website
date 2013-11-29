@@ -1,19 +1,47 @@
 <?php 
 App::uses('Twitter','Vendor');
+App::uses('Twitter2','Vendor');
 App::uses('twitteroauth.php','Vendor');
 
 
 class TwitterController extends AppController {
 
 
-	public $uses = array('FollowerId', 'AverageLightValue','AverageTempValue','DataStat', 'Actuators');
+	public $uses = array('FollowerId', 'AverageLightValue','AverageTempValue','DataStat', 'Actuators', 'LightValue', 'TempValue', 'InteractionData');
 
-	/*	public function getTweets(){
+	/*$consumerKey 		= 'f13aHtOr8H6P85kud4qx3Q'; 
+	$consumerSecret 	= '5RxwNk4QGmfV0Y56K6ViPTOQrWpgvjqn7lfJp5ZwQ';
+	$accessToken 		= '2164730497-HmrMmBDCJooJmQPtU3S1QOOzlXHd62xzO7VY2u1';
+	$accessTokenSecret 	= 'Sml2EmLI8YSGSlNwXxjJMImtUkV7l4zYRiz8juoLqsYBb';*/
 
-			 $consumerKey 		= 'f13aHtOr8H6P85kud4qx3Q'; 
-			 $consumerSecret 	= '5RxwNk4QGmfV0Y56K6ViPTOQrWpgvjqn7lfJp5ZwQ';
-			 $accessToken 		= '2164730497-HmrMmBDCJooJmQPtU3S1QOOzlXHd62xzO7VY2u1';
-			 $accessTokenSecret 	= 'Sml2EmLI8YSGSlNwXxjJMImtUkV7l4zYRiz8juoLqsYBb';
+	function getAllTweets(){
+		if($this->request->is('ajax')){
+			$this->layout = 'ajax';
+			$this->autoRender = false;
+		
+			$consumerKey 		= 'f13aHtOr8H6P85kud4qx3Q'; 
+			$consumerSecret 	= '5RxwNk4QGmfV0Y56K6ViPTOQrWpgvjqn7lfJp5ZwQ';
+			$accessToken 		= '2164730497-HmrMmBDCJooJmQPtU3S1QOOzlXHd62xzO7VY2u1';
+			$accessTokenSecret 	= 'Sml2EmLI8YSGSlNwXxjJMImtUkV7l4zYRiz8juoLqsYBb';
+
+			try{
+				$twitter = new Twitter($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret);
+
+				$response = $twitter->request("statuses/mentions_timeline", NULL, "GET");
+
+				echo json_encode($response);
+			}catch (Exception $e) {
+				echo "Error: ".$e;
+			}	
+		}
+	}
+
+		public function getTweets(){
+
+			$consumerKey 		= 'f13aHtOr8H6P85kud4qx3Q'; 
+			$consumerSecret 	= '5RxwNk4QGmfV0Y56K6ViPTOQrWpgvjqn7lfJp5ZwQ';
+			$accessToken 		= '2164730497-HmrMmBDCJooJmQPtU3S1QOOzlXHd62xzO7VY2u1';
+			$accessTokenSecret 	= 'Sml2EmLI8YSGSlNwXxjJMImtUkV7l4zYRiz8juoLqsYBb';
 
 			 $stats = array('light',
 			 				'temp',
@@ -25,7 +53,7 @@ class TwitterController extends AppController {
 				$lasttweet = $this->DataStat->find('first');
 				debug($lasttweet);
 				$lasttweet = $lasttweet['DataStat']['stat_value'];
-				$id = array('since_id'=> intval($lasttweet));
+				//$id = array('since_id'=> intval($lasttweet));
 
 			//	$response = $twitter->cachedRequest("statuses/mentions_timeline", $id, "GET");
 
@@ -39,8 +67,12 @@ class TwitterController extends AppController {
 							(in_array($val->entities->hashtags[1]->text, $stats))){
 								$this->tweetLast($val->user->id, $val->entities->hashtags[1]->text);
 						}
-						elseif($val->entities->hashtags[0]->text == "WarmMyHands"){
+						if(strtolower($val->entities->hashtags[0]->text) == "warmmyhands"){
 							$this->toggleGloves(1);
+						}if(strtolower($val->entities->hashtags[0]->text) == "coolmyface"){
+							$this->toggleFan(1);
+						}if(strtolower($val->entities->hashtags[0]->text) == "coolmybiscuits"){
+							$this->toggleFridge(1);
 						}
 					}
 					$lastID = $val->id;
@@ -62,6 +94,18 @@ class TwitterController extends AppController {
 		    array('Actuators.actuator_name <=' => "gloves")
 		);
 	}
+	public function toggleFan($val){
+		$this->Actuators->updateAll(
+		    array('Actuators.actuator_status' => 1),
+		    array('Actuators.actuator_name <=' => "fan")
+		);
+	}
+	public function toggleFridge($val){
+		$this->Actuators->updateAll(
+		    array('Actuators.actuator_status' => 1),
+		    array('Actuators.actuator_name <=' => "fridge")
+		);
+	}
 	public function tweetLast($userID, $requested){
 			$consumerKey 		= 'f13aHtOr8H6P85kud4qx3Q'; 
 			$consumerSecret 	= '5RxwNk4QGmfV0Y56K6ViPTOQrWpgvjqn7lfJp5ZwQ';
@@ -70,33 +114,33 @@ class TwitterController extends AppController {
 
 
 			$twitter = new Twitter($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret);
-			$lastvalue = 1;
-			$lasttime = "now";
-			/*
+			
 			switch($requested){
 				case "light":
-					$lastrecord = $this->LightValue->find('first', array('order' =>'timestamp DESC'));
+					$lastrecord = $this->LightValue->find('all', array('order' =>'timestamp DESC', 'limit' => 1));
+					debug($lastrecord);
 					$lastvalue = $lastrecord[0]['LightValue']['reading_value'];
 					$lasttime = $lastrecord[0]['LightValue']['timestamp'];
 					break;
 				case "temp":
-					$lastrecord = $this->TempValue->find('first', array('order' =>'timestamp DESC'));
+					$lastrecord = $this->TempValue->find('all', array('order' =>'timestamp DESC', 'limit' => 1));
 					$lastvalue = $lastrecord[0]['TempValue']['reading_value'];
 					$lasttime = $lastrecord[0]['TempValue']['timestamp'];
 					break;
 				case "interaction":
-					$lastrecord = $this->InteractionData->find('first', array('order' =>'timestamp DESC'));
+					$lastrecord = $this->InteractionData->find('all', array('order' =>'timestamp DESC', 'limit' => 1));
 					$lastvalue = $lastrecord[0]['InteractionData']['object_name'];
 					$lasttime = $lastrecord[0]['InteractionData']['timestamp'];
 					break;
-			}*/
-	/*		$msg = "Last " . $requested . " value was " . $lastvalue . " at " . $lasttime;
+			}
+		$msg = "Last " . $requested . " value was " . $lastvalue . " at " . $lasttime;
 			$options = array(
 						"user_id" => $userID,
 						"text" => utf8_encode($msg)); // .$web_enc
 			$twitter->request("direct_messages/new", $options);
-	}
 
+	}
+/*
 	public function sendHourTweet(){
 
 			$consumerKey 		= 'f13aHtOr8H6P85kud4qx3Q'; 
@@ -129,7 +173,7 @@ class TwitterController extends AppController {
 			}
 	}
 	
-	*/
+	
 	public function inDB($id){
 		$condition = array(
 					'followerID = ?' => $id
@@ -157,7 +201,7 @@ class TwitterController extends AppController {
 			$fbLink = "https://www.facebook.com/luisls"; //facebook link
 
 	try {
-		$connection = new Twitter($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret);
+		$connection = new Twitter2($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret);
 
 		$url = 'https://api.twitter.com/1.1/followers/list.json?cursor=-1&screen_name=sitestreams&skip_status=true&include_user_entities=false'; //URL of API to be used
 		$requestMethod = 'GET'; //type of method to be used 'GET' or 'POST', 
@@ -167,7 +211,7 @@ class TwitterController extends AppController {
 		//$resultfollowers = json_decode($followers, true); 
 		//$resultfollowers = (array) json_decode($followers);
 		debug($followers);
-		foreach($resultfollowers['ids'] as $val){
+		foreach($followers['ids'] as $val){
 			if($this->inDB($val)==false){
 				$record = Array( 'FollowerId' => 
 						Array(

@@ -2,7 +2,6 @@
 
 class AverageLightValue extends AppModel {
     
-
     
 }
 

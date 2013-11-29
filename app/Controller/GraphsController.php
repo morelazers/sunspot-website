@@ -54,12 +54,12 @@ class GraphsController extends AppController {
         
         $interactions = $this->InteractionData->find('all', 
           array(
-            'order' => array('InteractionData.timestamp DESC'),
+            /*'order' => 'InteractionData.timestamp DESC',*/
             'conditions' => $conditions
           )
         );
         
-        //debug($interactions);
+        debug($interactions);
         
         $data = array();
         foreach($interactions as $i){
@@ -430,7 +430,7 @@ class GraphsController extends AppController {
             echo json_encode(array('light' => $light));
         }
     }
-
+ $color = $this->SpotColour->find('all', array('conditions' => array('SpotColour.spot_address' => $spotAddr), 'limit' => 1, 'order' => 'SpotColour.timestamp DESC'));
   */
     public function getInteractionData(){
         if($this->request->is('ajax')){
@@ -440,13 +440,43 @@ class GraphsController extends AppController {
             $interactionsReadings = array();
             $results = array();
             for($i = 1; $i<5; $i++){
-            $conditions = array();
-            $results = $this->InteractionData->find('first', 
-                        array('conditions' => $conditions, 
-                        'order' => array('InteractionData.timestamp' => 'desc')));
+				$conditions = array();
+				/*$door = "door";
+				$results = $this->InteractionData->find('all',array('conditions' => array('InteractionData.object_name' => $door),
+															'order' => array('InteractionData.timestamp' => 'desc')));*/
+				$results = $this->InteractionData->find('first', array('conditions' => $conditions, 
+							'								order' => array('InteractionData.timestamp' => 'desc')));
                 array_push($interactionsReadings, $results);
             }
         echo json_encode(array('interactionsReadings' => $interactionsReadings));
+        }   
+    }
+
+	
+	public function getLastInteractionTime(){
+        if($this->request->is('ajax')){
+            $this->layout = 'ajax';
+            $this->autoRender = false;
+            $i = 0;
+            $interactionsReadings = array();
+            $results = array();
+            for($i = 1; $i<5; $i++){
+				$conditions = array();
+				$DoorTime = array();
+				$FridgeTime = array();
+				$WhiteboardTime = array();
+				$results = $this->InteractionData->find('all',array('conditions' => $conditions, 'order' => array('InteractionData.timestamp' => 'desc')));
+				foreach($results as $data){
+					if($data['InteractionData']['object_name'] === 'door' || $data['InteractionData']['object_name'] === 'Door'){
+						$DoorTime[] = $data['InteractionData']['timestamp'];
+					}else if($data['InteractionData']['object_name'] === 'fridge' || $data['InteractionData']['object_name'] === 'Fridge'){
+						$FridgeTime[] = $data['InteractionData']['timestamp'];
+					}else if($data['InteractionData']['object_name'] === 'whiteboard' || $data['InteractionData']['object_name'] === 'Whiteboard'){
+						$WhiteboardTime[] = $data['InteractionData']['timestamp'];
+					}
+				}
+            }
+        echo json_encode(array('doortime' => $DoorTime, 'fridgetime' => $FridgeTime, 'whiteboardtime' => $WhiteboardTime));
         }   
     }
 	
@@ -457,14 +487,14 @@ class GraphsController extends AppController {
             $i = 0;
             $actuatorReadings = array();
             $results = array();
-            for($i = 1; $i<5; $i++){
+            //for($i = 1; $i<5; $i++){
             $conditions = array();
-            $results = $this->Actuators->find('first', 
-                        array('conditions' => $conditions, 
-                        'order' => array('Actuators.id' => 'desc')));
-                array_push($actuatorReadings, $results);
+            $results = $this->Actuators->find('all');
+            //}
+            foreach($results as $result){
+                $actuatorReadings[] = $result;
             }
-        echo json_encode(array('actuatorReadings' => $actuatorReadings));
+            echo json_encode(array('vals' => $actuatorReadings));
         }   
     }
 
@@ -613,25 +643,6 @@ class GraphsController extends AppController {
             $this->layout = 'ajax';
             $this->autoRender = false;
 
-/*            $daysToGoBack = $this->request->data['daysToGoBack'];
-            
-            // get now
-            $time = time();
-            
-            // get x days back
-            $timestamp = $time - ($daysToGoBack * 86400);
-            
-            // get x + 1 days back
-            $endTime = $time - (($daysToGoBack - 1) * 86400);
-            
-            // start date
-            $startDate = date("Y-m-d", $timestamp);
-            
-            // end date of now
-            $endDate = date("Y-m-d", $endTime);
-            
-            //$conditions = array('LocationData.timestamp BETWEEN ? and ?' => array($startDate, $endDate));
-            */
             $locationHistory = $this->LocationData->find('all');
 
             debug($locationHistory);
@@ -652,6 +663,26 @@ class GraphsController extends AppController {
             if(!empty($locationHistory)){
                 echo json_encode(array('zone1Vals' => $zone1Vals, 'zone2Vals' => $zone2Vals, 'zone3Vals' => $zone3Vals));
             }
+			
+/*            $daysToGoBack = $this->request->data['daysToGoBack'];
+            
+            // get now
+            $time = time();
+            
+            // get x days back
+            $timestamp = $time - ($daysToGoBack * 86400);
+            
+            // get x + 1 days back
+            $endTime = $time - (($daysToGoBack - 1) * 86400);
+            
+            // start date
+            $startDate = date("Y-m-d", $timestamp);
+            
+            // end date of now
+            $endDate = date("Y-m-d", $endTime);
+            
+            //$conditions = array('LocationData.timestamp BETWEEN ? and ?' => array($startDate, $endDate));
+            */
 
         }
     }
@@ -870,8 +901,13 @@ public function getLiveLight(){
             $time = $this->request->data['tmpTime'];
             $timestamp = date("Y-m-d H:i:s", ($time/1000));
             $conditions = array("LightValue.timestamp > ?" => $timestamp);
-            $vals = $this->LightValue->find('all', array('conditions'=>$conditions,
-                                             'order' => array("LightValue.timestamp" => 'asc')));
+            $vals = $this->LightValue->find('all', 
+                array(
+                'conditions' => $conditions,
+                'order' => array("LightValue.timestamp" => 'asc'),
+                'limit' => 20
+                )
+            );
             echo json_encode(array('vals' => $vals));
         }
     }
@@ -883,7 +919,8 @@ public function getLiveLight(){
             $timestamp = date("Y-m-d H:i:s", ($time/1000));
             $conditions = array("TempValue.timestamp > ?" => $timestamp);
             $vals = $this->TempValue->find('all', array('conditions'=>$conditions,
-                                             'order' => array("TempValue.timestamp" => 'asc')));
+                                             'order' => array("TempValue.timestamp" => 'asc'),
+                                             'limit' => 20));
             echo json_encode(array('vals' => $vals));
         }
     }

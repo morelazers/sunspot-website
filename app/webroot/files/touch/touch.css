@@ -1,0 +1,196 @@
+body{
+	background-image: url(../../img/touch/bg.png);
+}
+
+#twitter-widget{
+	height: 650px;
+	width: 300px;
+}
+
+.expand-sidebar{
+	text-align: center;
+	width: 100%;
+}
+
+.live-chart{
+	width: 620px;
+}
+
+.grid-item{
+/*	height: auto;
+	width: auto;*/
+	border: 5px solid black;
+}
+
+/*.gridster .grid-item[data-sizex="1"]{
+	height: 300px;
+	width: 300px;
+}
+*/
+/* TOP ITEM LIST */
+.item-list {
+  width: 80%;
+  height: 150px;
+  margin-left: 10%;
+  border: 2px dashed black;
+  position: relative;
+  background-color: #eeeeee;
+}
+
+.button-container{
+	text-align: center;
+	margin: 0 auto;
+	width: 80%;
+}
+
+.add-widget-button{
+	height: 100px;
+	width: 100px;
+	border: 3px solid green;
+	float: left;
+	margin-left: 10px;
+	margin-top: 25px;
+}
+
+.add-widget-button:hover{
+	border: 3px solid red;
+}
+
+.on-display{
+	border: 3px solid red;
+}
+
+#add-movement{
+        background-image:url(../app/webroot/img/movement_icon.png);
+        background-repeat: no-repeat;
+}
+
+/* MAIN DIV */
+.main{
+	width: 90%;
+	margin-left: 5%;
+	height: 600px;
+	background-color: blue;
+	border: 2px dashed black;
+	position: relative;
+}
+
+/* ALL GRID ELEMENTS */
+.in-grid{
+	position: absolute;
+}
+
+/* BEGIN MOVEMENT CSS */
+#movement{
+	height: 298px;
+	width: 888px;
+	background: #CCC;
+	background-image: url(../../img/lab.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+.lab-zone{
+    position: absolute;
+    border: 2px dashed black;
+}
+
+.zone-1{
+    top: 12px;
+    height: 125px;
+    width: 244px;
+    left: 11px;
+}
+
+.zone-2{
+    top: 139px;
+    height: 125px;
+    width: 244px;
+	left: 11px;
+    /*margin-left: 4px;*/
+}
+
+.zone-3{
+	top: 12px;
+    width: 379px;
+    left: 257px;
+    height: 125px;
+}
+
+.zone-4{
+    top: 139px;
+    width: 379px;
+    left: 257px;
+    /*margin-top: 12px;*/
+    height: 125px;
+}
+
+.zone-5{
+	top: 12px;
+    left: 638px;
+    height: 125px;
+    /*margin-top: -9px;*/
+    width: 244px;
+}
+
+.zone-6{
+    left: 638px;
+    height: 125px;
+    /*margin-top: -9px;*/
+    width: 244px;
+    top: 139px;
+}
+
+.live-user-location{
+	position: absolute;
+	-webkit-transition:background-image 1s ease-in;  
+    -moz-transition:background-image 1s ease-in;  
+    -o-transition:background-image 1s ease-in;  
+    transition:background-image 1s ease-in;  
+    background-image: repeating-linear-gradient(45deg, #8b0 0px, #8b0 25px, transparent 25px, transparent 50px, transparent 50px);
+    left: inherit;
+    top: inherit;
+}
+/* END MOVEMENT CSS */
+
+
+/* SWITCHBOX */
+#switch-colour-box{
+    -webkit-transition:background-color 1s ease-in;  
+    -moz-transition:background-color 1s ease-in;  
+    -o-transition:background-color 1s ease-in;  
+    transition:background-color 1s ease-in;  
+    height: 300px;
+    width: 300px;
+    border: 5px solid #3B424D;
+    background-color: rgba(255,255,255,0.5);
+}
+
+/* BEGIN LIVE INTERACTIONS CSS */
+.live-interaction-widget{
+  height: 100px;
+  width: 100px;
+}
+
+#live-interactions{
+	height: 300px;
+	width: 300px;
+	background-color: transparent;
+}
+
+#live-interaction-images{
+  float:left;
+}
+
+#live-fridge-interactions{
+  background:url(/img/fridge_wid.png) no-repeat left;
+}
+
+#live-door-interactions{
+  background:url(/img/door_wid.png) no-repeat left;
+}
+
+#live-whiteboard-interactions{
+  background:url(/img/whiteboard_wid.png) no-repeat left;
+}
+/* END LIVE INTERACTIONS CSS */

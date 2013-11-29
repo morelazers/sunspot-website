@@ -2,7 +2,6 @@
 
 class TempValue extends AppModel {
     
-
     
 }
 

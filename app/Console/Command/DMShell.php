@@ -1,11 +1,10 @@
 <?php
 
-class directMShell extends Shell{
+class DMShell extends Shell{
 	
 	public $uses = array('FollowerId', 'AverageLightValue','AverageTempValue');
 
-
-/*public function inDB($id){
+	public function inDB($id){
 		$condition = array(
 					'followerID = ?' => $id
 					);
@@ -16,9 +15,9 @@ class directMShell extends Shell{
 		else{
 			return false;
 		}
-	}*/
-	public function directM(){
-		App::uses('Twitter','Vendor');
+	}
+	public function dMShell(){
+		App::uses('Twitter2','Vendor');
 		App::uses('twitteroauth.php','Vendor');
 
 			//twitter credentials & OAuth settings 
@@ -29,18 +28,14 @@ class directMShell extends Shell{
 			$accessTokenSecret 	= 'Sml2EmLI8YSGSlNwXxjJMImtUkV7l4zYRiz8juoLqsYBb';
 
 			$method = 'direct_messages/new'; //method to be used
-			$website = "luisls.info"; //website URL
-			$web_enc = rawurlencode("http://luisls.info");
-			$fbLink = "https://www.facebook.com/luisls"; //facebook link
-
+			//$website = "luisls.info"; //website URL
+			//$web_enc = rawurlencode("http://luisls.info");
+			//$fbLink = "https://www.facebook.com/luisls"; //facebook link
 	try {
-		$connection = new Twitter($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret);
-
+		$connection = new Twitter2($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret);
 		$url = 'https://api.twitter.com/1.1/followers/list.json?cursor=-1&screen_name=sitestreams&skip_status=true&include_user_entities=false'; //URL of API to be used
 		$requestMethod = 'GET'; //type of method to be used 'GET' or 'POST', 
-
 		$followers = $connection->cachedRequest('followers/ids', array('user_id' => '2164730497')); //get followers through cachedRequest function(twitter.class.php)
-		debug($followers);
 		foreach($followers['ids'] as $val){
 			if($this->inDB($val)==false){
 				$record = Array( 'FollowerId' => 

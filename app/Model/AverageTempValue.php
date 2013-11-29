@@ -3,7 +3,6 @@
 class AverageTempValue extends AppModel {
     
 
-    
 }
 
 ?>

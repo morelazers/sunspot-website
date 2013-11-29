@@ -119,13 +119,14 @@ function drawDailyTempChart() {
 
         var chart = new google.visualization.ColumnChart(document.getElementById('static-temp-chart'));
         var options = {
+            'backgroundColor': 'transparent',
             title: 'Hourly Averages for ' + curDate,
             vAxis: {title: 'Value (Degrees C)',
         			minValue: 0,
         			maxValue: 100},
             hAxis: {title: 'Hour', minValue: 0, maxValue: 24, showTextEvery: 1,
              	ticks: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]},
-            width: 800, height: 400,
+            width: 1600, height: 600,
             legend: 'none',
             pointSize: 5,
             interpolateNulls : true
@@ -170,13 +171,14 @@ function drawHourlyTempChart() {
 
         var chart = new google.visualization.ColumnChart(document.getElementById('static-temp-chart'));
         var options = {
+            'backgroundColor': 'transparent',
             title: 'Raw Values for ' + curDateTime,
             vAxis: {title: 'Value (Degrees C)',
         			minValue: 0,
         			maxValue: 100},
             hAxis: {title: 'Minute', minValue: 0, maxValue: 60, showTextEvery: 5,
              	ticks: ticksArray},
-            width: 1200, height: 600,
+            width: 1600, height: 600,
             legend: 'none',
             pointSize: 0.5
         };
@@ -220,7 +222,7 @@ function drawDailyLightChart() {
             vAxis: {title: 'Light Value (Lux)'},
             hAxis: {title: 'Hour', minValue: 0, maxValue: 24, showTextEvery: 1,
              	ticks: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]},
-            width: 800, height: 400,
+            width: 1600, height: 600,
             legend: 'none',
             pointSize: 5,
             interpolateNulls : true
@@ -272,7 +274,7 @@ function drawHourlyTempChart() {
                     maxValue: 100},
             hAxis: {title: 'Minute', minValue: 0, maxValue: 60, showTextEvery: 5,
                 ticks: ticksArray},
-            width: 1200, height: 600,
+            width: 1600, height: 600,
             legend: 'none',
             pointSize: 0.5
         };

@@ -434,26 +434,38 @@ nav a:hover {
     position: absolute;
     left: 1000px;
 }
-
+#cup{
+	position:absolute;
+	height: 510px;
+	width: 510px;
+	background-image:url(../app/webroot/img/compass.png);
+	background-repeat: no-repeat;
+    background-position:2px center;
+	border-style: solid; 
+	border-color: #eeeeee; 
+	border-width: 5px; 
+	border-top-left-radius: 25px;
+	border-top-right-radius: 25px;
+	border-bottom-left-radius: 25px;
+	border-bottom-right-radius: 25px;
+	margin: 5px; 
+	background-color: #306e73;
+}
+/*
 #live-temp-light-widget{
     position: absolute;
     left: -100px;
-    top: 200px;
+    top: 150px;
 }
 #live-interaction-widget{
     position: absolute;
     left: -100px;
-    top: 200px;
-}
-#touch_live-interaction-widget{
-    position: absolute;
-    left: 10px;
-    top: 60px;
+    top: 150px;
 }
 #live-usb-widget{
     position: absolute;
     left: -100px;
-    top: 200px;
+    top: 150px;
 }
 
 #nodeOne{
@@ -540,46 +552,6 @@ nav a:hover {
         left: 710px;
         top: 230px;
 }
-#touch_nodeFour{
-        border-style: solid; 
-        border-color: #eeeeee; 
-        border-width: 5px; 
-        border-top-left-radius: 25px;
-		border-top-right-radius: 25px;
-        margin: 5px; 
-        width: 100px; 
-        height: 200px; 
-        background-color: #306e73;
-        position: absolute;
-        left: 0px;
-        top: 10px;
-}
-#touch_nodeFive{
-        border-style: solid; 
-        border-color: #eeeeee; 
-        border-width: 5px; 
-        margin: 5px; 
-        width: 100px; 
-        height: 200px; 
-        background-color: #306e73;
-        position: absolute;
-        left: 0px;
-        top: 210px;
-}
-#touch_nodeSix{
-        border-style: solid; 
-        border-color: #eeeeee; 
-        border-width: 5px; 
-        border-bottom-left-radius: 25px;
-		border-bottom-right-radius: 25px;
-        margin: 5px; 
-        width: 100px; 
-        height: 200px; 
-        background-color: #306e73;
-        position: absolute;
-        left: 0px;
-        top: 410px;
-}
 #nodeSeven{
         border-style: solid; 
         border-color: #eeeeee; 
@@ -657,33 +629,18 @@ nav a:hover {
 }
 #door_Img {
 		position: absolute;
-		left: 70px;
+		left: 10px;
 		top: 05px;
 }
 #fridge_Img {
 		position: absolute;
-		left: 70px;
+		left: 10px;
 		top: 05px;
 }
 #whiteboard_Img {
 		position: absolute;
-		left: 60px;
-		top: 05px;
-}
-#touch_door_Img {
-		position: absolute;
-		left: 15px;
-		top: 60px;
-}
-#touch_fridge_Img {
-		position: absolute;
-		left: 15px;
-		top: 60px;
-}
-#touch_whiteboard_Img {
-		position: absolute;
 		left: 10px;
-		top: 60px;
+		top: 05px;
 }
 #glove_Img {
 		position: absolute;
@@ -707,6 +664,36 @@ nav a:hover {
 		width: 90xp;
 }
 
+#door_txt{
+	font-family: "Arial Black", Gadget, sans-serif;
+    text-align: center;
+    color: #333333;
+    font-size: 15px;
+	position: absolute;
+	left: 75px;
+	top: 0px;
+}
+#fridge_txt{
+	font-family: "Arial Black", Gadget, sans-serif;
+	position: absolute;
+	text-align: center;
+    color: #333333;
+    font-size: 15px;
+	position: absolute;
+	left: 75px;
+	top: 0px;
+}
+#whiteboard_txt{
+	font-family: "Arial Black", Gadget, sans-serif;
+	position: absolute;
+	text-align: center;
+    color: #333333;
+    font-size: 15px;
+	position: absolute;
+	left: 80px;
+	top: 0px;
+}
+
 #nodeOne:hover{
         background-color:#ff5335;
 }
@@ -723,15 +710,6 @@ nav a:hover {
         background-color:#ff5335;
 }
 #nodeSix:hover{
-        background-color:#ff5335;
-}
-#touch_nodeFour:hover{
-        background-color:#ff5335;
-}
-#touch_nodeFive:hover{
-        background-color:#ff5335;
-}
-#touch_nodeSix:hover{
         background-color:#ff5335;
 }
 #nodeSeven:hover{
@@ -798,7 +776,7 @@ nav a:hover {
     left: 105px;
     top: 18px;
 }
-
+*/
 .live-widget-value{
     position: absolute;
 }
@@ -881,6 +859,8 @@ nav a:hover {
     -o-transition:background-image 1s ease-in;  
     transition:background-image 1s ease-in;  
     background-image: repeating-linear-gradient(45deg, #8b0 0px, #8b0 25px, transparent 25px, transparent 50px, transparent 50px);
+    top: inherit;
+    left: inherit;
 }
 
 #lab-zone-overlay{
@@ -898,13 +878,9 @@ nav a:hover {
 }
 
 .live-chart{
-  margin-left: 365px;
-  padding-top: 50px;
 }
 
 .static-chart{
-  margin-left: 365px;
-  padding-top: 50px;
 }
 
 #stats-interaction-chart{

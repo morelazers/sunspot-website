@@ -69,9 +69,10 @@ $(document).ready(function(){
 	$(".overview").click(function(){
 	  	hideAll();
 	    stopAllLiveUpdates();
-	    loadLabWidgets();
+		loadCup();
+	    /*loadLabWidgets();
 		loadInteractionWidgets();
-		loadActuatorWidgets();
+		loadActuatorWidgets();*/
         if($("#lab-screen").is(":visible")){
             $("#lab-sidebar").slideUp();
             $("#lab-zone-overlay").fadeOut(200);
@@ -159,11 +160,15 @@ function loadLabMovementScreen(){
     }
     
     function loadLabInteractionData(){
-      window.updateInteraction = window.setInterval(getInteractionData, 1000);
+      window.updateInteraction = window.setInterval(getInteractionData, 10000);
       $("#live-interactions").show();
     }
 
-    function loadLabWidgets(){
+	function loadCup(){
+        cup();
+        $("#cup").show();
+    }
+    /*function loadLabWidgets(){
         getLiveLight();
         window.updateLightWidget = window.setInterval(getLiveLight, 500);
         getLiveTemp();
@@ -173,7 +178,10 @@ function loadLabMovementScreen(){
 
     function loadInteractionWidgets(){
         getInteractionData();
-        window.updateInteractionWidget = window.setInterval(getInteractionData, 500);
+		getLastInteractionTime();
+        window.updateInteractionWidget = window.setInterval(getInteractionData, 1000);
+		window.updateTxtWidget = window.setInterval(getLastInteractionTime, 1000);
+		
         $("#live-interaction-widget").show();
     }
 	
@@ -181,7 +189,7 @@ function loadLabMovementScreen(){
         getActuatorData();
         window.updateActuatorWidget = window.setInterval(getActuatorData, 500);
         $("#live-usb-widget").show();
-    }
+    }*/
     
     function loadLabSwitchData(){
         window.updateSwitch = window.setInterval(getLiveSwitchPress, 500);

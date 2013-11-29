@@ -1,7 +1,64 @@
+body{
+	background-image: url(../../img/touch/bg4.png);
+	background-repeat: no-repeat;
+}
+
+#twitter-widget{
+    pointer-events:none;
+    font-family: "Calibri";
+	height: 300px;
+	width: 300px;
+    background-color: rgba(38, 38, 38, 0.1);
+}
+
+.twitter-article{
+    display:block;
+}
+
+.twitter-date{
+    color: rgba(38, 38, 38, 1);
+}
+
+.twitter-username{
+    color: rgba(38, 38, 38, 1);
+}
+
+#twitter-feed{
+    height: inherit;
+    width: inherit;
+}
+
+.twitter-article{
+    
+    display: block;
+}
+
+.twitter-text{
+    top: 150px;
+    font-size: 30px;
+}
+
+#sidebar-button{
+        position: relative;
+		left: center;
+		top: 0px;
+		height: 30px;
+		width: 30px;
+}
+
+.expand-sidebar{
+	text-align: center;
+	width: 100%;
+}
+
+.live-chart{
+	width: 620px;
+}
+
 .grid-item{
-	border: 2px solid green;
-	height: auto;
-	width: auto;
+/*	height: auto;
+	width: auto;*/
+	border: 3px solid rgba(38, 38, 38, 0.3);
 }
 
 /*.gridster .grid-item[data-sizex="1"]{
@@ -11,11 +68,56 @@
 */
 /* TOP ITEM LIST */
 .item-list {
-  width: 80%;
-  margin-left: 15%;
-  border: 2px dashed black;
+  width: 100%;
+  height: 150px;
   position: relative;
+  background-color: rgba(38, 38, 38, 0.2);
 }
+
+.button-container{
+	text-align: center;
+	margin: 0 auto;
+	width: 100%;
+    margin-left: 32.5%;
+}
+
+.add-widget-button{
+	height: 100px;
+	width: 100px;
+	float: left;
+	margin-left: 10px;
+	margin-top: 25px;
+}
+			
+#add-movement{
+        background-image:url(../../img/touch/movement_icon.png);
+        background-repeat: no-repeat;
+}
+#add-switch{
+        background-image:url(../../img/touch/switch_icon.png);
+        background-repeat: no-repeat;
+}
+#add-interaction{
+        background-image:url(../../img/touch/interaction_icon.png);
+        background-repeat: no-repeat;
+}
+#add-live-temp{
+        background-image:url(../../img/touch/temp_icon.png);
+        background-repeat: no-repeat;
+}
+#add-live-light{
+        background-image:url(../../img/touch/light_icon.png);
+        background-repeat: no-repeat;
+}
+#add-twitter{
+        background-image:url(../../img/touch/twitter_icon.png);
+        background-repeat: no-repeat;
+}
+#add-overview{
+    background-image:url(../../img/touch/magnglassreverse.png);
+    background-repeat: no-repeat;
+}
+
 
 /* MAIN DIV */
 .main{
@@ -36,10 +138,71 @@
 #movement{
 	height: 298px;
 	width: 888px;
-	background: #CCC;
-	background-image: url(../../img/lab.png);
+	background-image: url(../../img/touch/lab3.png);
 	background-repeat: no-repeat;
 	background-size: contain;
+}
+
+.lab-zone{
+    position: absolute;
+    border: 2px dashed black;
+}
+
+.zone-1{
+    top: 10px;
+    height: 125px;
+    width: 244px;
+    left: 9px;
+}
+
+.zone-2{
+    top: 137px;
+    height: 114px;
+    width: 244px;
+	left: 9px;
+    /*margin-left: 4px;*/
+}
+
+.zone-3{
+	top: 10px;
+    width: 379px;
+    left: 255px;
+    height: 125px;
+}
+
+.zone-4{
+    top: 137px;
+    width: 379px;
+    left: 255px;
+    /*margin-top: 12px;*/
+    height: 114px;
+}
+
+.zone-5{
+	top: 10px;
+    left: 636px;
+    height: 125px;
+    /*margin-top: -9px;*/
+    width: 244px;
+}
+
+.zone-6{
+    left: 636px;
+    height: 114px;
+    /*margin-top: -9px;*/
+    width: 244px;
+    top: 137px;
+}
+
+.live-user-location{
+	position: absolute;
+	-webkit-transition:background-image 1s ease-in;  
+    -moz-transition:background-image 1s ease-in;  
+    -o-transition:background-image 1s ease-in;  
+    transition:background-image 1s ease-in;  
+    background-image: repeating-linear-gradient(45deg, #8b0 0px, #8b0 25px, transparent 25px, transparent 50px, transparent 50px);
+    left: inherit;
+    top: inherit;
 }
 /* END MOVEMENT CSS */
 
@@ -52,14 +215,20 @@
     transition:background-color 1s ease-in;  
     height: 300px;
     width: 300px;
-    border: 5px solid #3B424D;
-    background-color: #ffffff;
+    /*border: 5px solid #3B424D;*/
+    background-color: rgba(255,255,255,0.5);
 }
 
 /* BEGIN LIVE INTERACTIONS CSS */
 .live-interaction-widget{
   height: 100px;
   width: 100px;
+}
+
+#live-interactions{
+	height: 300px;
+	width: 300px;
+	background-color: transparent;
 }
 
 #live-interaction-images{
@@ -78,3 +247,224 @@
   background:url(/img/whiteboard_wid.png) no-repeat left;
 }
 /* END LIVE INTERACTIONS CSS */
+
+#live-light-con{
+  pointer-events: none;
+}
+
+#live-temp-con{
+  pointer-events: none;
+}
+
+
+
+/* WIDGET */
+
+#nodeOne{
+        border-style: solid; 
+        border-color: rgba(38, 38, 38, 0.3); 
+        border-width: 5px; 
+        border-top-left-radius: 25px;
+        margin: 5px; 
+        width: 200px; 
+        height: 200px; 
+        background-color: rgba(255, 255, 255, 0.0);
+        background-image:url(../app/webroot/img/Zone_1.png);
+        background-repeat: no-repeat;
+        background-position:0px 0px;
+        position: absolute;
+        /*top: 30px;*/
+}
+
+#nodeTwo{
+        border-style: solid; 
+        border-color: rgba(38, 38, 38, 0.3); 
+        border-width: 5px; 
+        margin: 5px; 
+        width: 200px; 
+        height: 200px; 
+        background-color: rgba(255, 255, 255, 0.0);
+        background-image:url(../app/webroot/img/Zone_2.png);
+        background-repeat: no-repeat;
+        background-position:0px 0px;
+        position: absolute;
+        left: 200px;
+        /*top: 30px;*/
+}
+#nodeThree{
+        border-style: solid; 
+        border-color: rgba(38, 38, 38, 0.3); 
+        border-width: 5px; 
+        border-top-right-radius: 25px;
+        margin: 5px; 
+        width: 200px; 
+        height: 200px; 
+        background-color: rgba(255, 255, 255, 0.0);
+        background-image:url(../app/webroot/img/Zone_3.png);
+        background-repeat: no-repeat;
+        background-position:0px 0px;
+        position: absolute;
+        left: 400px;
+        /*top: 30px;*/
+}
+
+#oneT_Img {
+        position: absolute;
+        left: 20px;
+        top: 40px;
+}
+#twoT_Img {
+        position: absolute;
+        left: 20px;
+        top: 40px;
+}
+#threeT_Img {
+        position: absolute;
+        left: 20px;
+        top: 40px;
+}
+#oneL_Img {
+        position: absolute;
+        left: 68px;
+        top: 25px;
+        height: 150px;
+        width: 130px;
+}
+#twoL_Img {
+        position: absolute;
+        left: 68px;
+        top: 25px;
+        height: 150px;
+        width: 130px;
+}
+#threeL_Img {
+        position: absolute;
+        left: 68px;
+        top: 25px;
+        height: 150px;
+        width: 130px;
+}
+
+#T1{
+    font-family: "Arial Black", Gadget, sans-serif;
+    text-align: left;
+    color: #FFFFFF;
+    font-size: 20px;
+    position: absolute;
+    left: 30px;
+    top: 125px;
+}
+#L1{
+    font-family: "Arial Black", Gadget, sans-serif;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 20px;
+    position: absolute;
+    left: 83px;
+    width: 100px;
+    top: 50px;
+}
+#T2{
+    font-family: "Arial Black", Gadget, sans-serif;
+    text-align: left;
+    color: #FFFFFF;
+    font-size: 20px;
+    position: absolute;
+    left: 30px;
+    top: 110px;
+}
+#L2{
+    font-family: "Arial Black", Gadget, sans-serif;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 20px;
+    position: absolute;
+    left: 83px;
+    width: 100px;
+    top: 46px;
+}
+#T3{
+    font-family: "Arial Black", Gadget, sans-serif;
+    text-align: left;
+    color: #FFFFFF;
+    font-size: 20px;
+    position: absolute;
+    left: 30px;
+    top: 105px;
+}
+#L3{
+    font-family: "Arial Black", Gadget, sans-serif;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 20px;
+    position: absolute;
+    left: 83px;
+    width: 100px;
+    top: 18px;
+}
+
+.live-widget-value{
+    position: absolute;
+}
+
+#glove_Img {
+        position: absolute;
+        left: 55px;
+        top: 05px;
+        height: 90px;
+        width: 90xp;
+}
+#mini_fridge_Img {
+        position: absolute;
+        left: 45px;
+        top: 05px;
+        height: 90px;
+        width: 90xp;
+}
+#fan_Img {
+        position: absolute;
+        left: 55px;
+        top: 05px;
+        height: 90px;
+        width: 90xp;
+}
+
+#nodeSeven{
+        border-style: solid; 
+        border-color: rgba(38, 38, 38, 0.3); 
+        border-width: 5px; 
+        border-bottom-left-radius: 25px;
+        margin: 5px; 
+        width: 200px; 
+        height: 100px; 
+        background-color: transparent;
+        position: absolute;
+        top: 200px;
+}
+#nodeEight{
+        border-style: solid; 
+        border-color: rgba(38, 38, 38, 0.3); 
+        border-width: 5px; 
+        margin: 5px; 
+        width: 200px; 
+        height: 100px; 
+        background-color: transparent;
+        position: absolute;
+        left: 200px;
+        top: 200px;
+}
+#nodeNine{
+        border-style: solid; 
+        border-color: rgba(38, 38, 38, 0.3); 
+        border-width: 5px; 
+        border-bottom-right-radius: 25px;
+        margin: 5px; 
+        width: 200px; 
+        height: 100px; 
+        background-color: transparent;
+        position: absolute;
+        left: 400px;
+        top: 200px;
+}
+
+/* END MOVEMENT */

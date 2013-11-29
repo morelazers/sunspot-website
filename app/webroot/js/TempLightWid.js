@@ -15,11 +15,11 @@
 						if(parseInt(vals[i]['LightValue']['lab_zone']) == 1){
 							var str = (vals[i]['LightValue']['reading_value']);
 							var val = str.concat("lx")
-								if(str < 30){
-									document.getElementById("oneL_Img").src="../app/webroot/img/bulb_high.png";
-									$('#L1').html(val);
-								}else if(str > 80){
+								if(str <= 30){
 									document.getElementById("oneL_Img").src="../app/webroot/img/bulb_dim.png";
+									$('#L1').html(val);
+								}else if(str >= 80){
+									document.getElementById("oneL_Img").src="../app/webroot/img/bulb_high.png";
 									$('#L1').html(val);
 								}else if(str > 30 || str < 80){
 									document.getElementById("oneL_Img").src="../app/webroot/img/bulb_mid.png";
@@ -29,11 +29,11 @@
 						if(parseInt(vals[i]['LightValue']['lab_zone']) == 2){
 							var str = (vals[i]['LightValue']['reading_value']);
 							var val = str.concat("lx")
-								if(str < 30){
-									document.getElementById("twoL_Img").src="../app/webroot/img/bulb_high.png";
-									$('#L2').html(val);
-								}else if(str > 80){
+								if(str <= 30){
 									document.getElementById("twoL_Img").src="../app/webroot/img/bulb_dim.png";
+									$('#L2').html(val);
+								}else if(str >= 80){
+									document.getElementById("twoL_Img").src="../app/webroot/img/bulb_high.png";
 									$('#L2').html(val);
 								}else if(str > 30 || str < 80){
 									document.getElementById("twoL_Img").src="../app/webroot/img/bulb_mid.png";

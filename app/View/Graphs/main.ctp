@@ -27,7 +27,7 @@
                 <div id="zone-4" class="lab-zone zone-4"></div>
                 <div id="zone-5" class="lab-zone zone-5"></div>
                 <div id="zone-6" class="lab-zone zone-6"></div>
-				        <div id="user-test" class="live-user-location zone-1"></div>
+				        <!-- <div id="user-test" class="live-user-location zone-1"></div> -->
             </div>
 
         </div>
@@ -129,6 +129,8 @@
     </div>
 </div>
 <div id="overview-screen" class="slider">
+<div id="cup"></div>
+<!--
   <div id="live-temp-light-widget">
   		<div id="nodeOne">
 			<img id="oneT_Img" src="../app/webroot/img/temp_mid.png">
@@ -152,23 +154,15 @@
   <div id ="live-interaction-widget">
   		<div id="nodeFour">
 		<img id="door_Img" src="../app/webroot/img/door_wid.png">
+		<p id="door_txt"></p>
   		</div>
   		<div id="nodeFive">
 		<img id="fridge_Img" src="../app/webroot/img/fridge_wid.png">
+		<p id="fridge_txt"></p>
   		</div>
   		<div id="nodeSix">
 		<img id="whiteboard_Img" src="../app/webroot/img/whiteboard_wid.png">
-  		</div> 
-  </div>
-  <div id ="touch_live-interaction-widget">
-  		<div id="touch_nodeFour">
-		<img id="touch_door_Img" src="../app/webroot/img/door_wid.png">
-  		</div>
-  		<div id="touch_nodeFive">
-		<img id="touch_fridge_Img" src="../app/webroot/img/fridge_wid.png">
-  		</div>
-  		<div id="touch_nodeSix">
-		<img id="touch_whiteboard_Img" src="../app/webroot/img/whiteboard_wid.png">
+		<p id="whiteboard_txt"></p>
   		</div> 
   </div>
   <div id ="live-usb-widget">
@@ -182,6 +176,7 @@
 		<img id="fan_Img" src="../app/webroot/img/usb_fan.png">
   		</div> 
   </div>
+  -->
   
   
   <div id ="overview-text">
@@ -289,14 +284,21 @@ window.onload = function(){
 <!--<script src="js/getLiveInteractionData.js"></script>-->
 <!-- <script src="js/getPastMovementData.js"></script> -->
 <script src="js/getLiveSwitchPress.js"></script>
-<script src="js/getTimelineData.js"></script>
+<!--<script src="js/getTimelineData.js"></script>
 <script src="js/TempLightWid.js"></script>
-<script src="js/getActuatorData.js"></script> 
+<script src="js/getActuatorData.js"></script> -->
+<script src="js/cup/cup.js"></script>
+<script src="js/cup/Three.js"></script>
+<script src="js/cup/Detector.js"></script>
+<script src="js/cup/Stats.js"></script>
+<script src="js/cup/OrbitControls.js"></script>
+<script src="js/cup/THREEx.KeyboardState.js"></script>
+<script src="js/cup/THREEx.FullScreen.js"></script>
+<script src="js/cup/THREEx.WindowResize.js"></script>
 <script src="js/liveCharts.js"></script>
 <script src="js/stopAllLiveUpdates.js"></script>
 <script src="js/script.js"></script>
-<script src="js/test.js"></script>
-
+<!-- <script src="js/test.js"></script> -->
 <script>
     google.load('visualization', '1.0', {'packages':['corechart']});
     var curDate = "";

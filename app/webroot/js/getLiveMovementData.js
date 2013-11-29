@@ -39,12 +39,14 @@ function getLiveMovement() {
     	/* find out which zone the user was in previously so we can resize the other elements */
     	oldZone = parseInt($("#user-" + spotId).attr('class').slice(24));
 
-    	console.log("Spot " + spotId + " moved from " + oldZone + " to " + newZone);
+      if(oldZone != newZone){
 
-    	/* add the zone class to the user div */
-    	$("#user-" + spotId).removeClass (function (index, css) {
-		    return (css.match (/\bzone-\S+/g) || []).join(' ');
-		  });
+        console.log("Spot " + spotId + " moved from " + oldZone + " to " + newZone);
+
+        /* add the zone class to the user div */
+        $("#user-" + spotId).removeClass (function (index, css) {
+          return (css.match (/\bzone-\S+/g) || []).join(' ');
+        });
 
         $("#user-" + spotId).addClass("zone-" + newZone);
 
@@ -53,39 +55,48 @@ function getLiveMovement() {
         var usersInNewZone = $(".zone-" + newZone).length - 1;
 
 
-    		/*console.log(usersInOldZone);
+        /*console.log(usersInOldZone);
         console.log(usersInNewZone);*/
-		oldMove = $("#zone-" + oldZone).position();
+        oldMove = $("#zone-" + oldZone).position();
         oldHeight = parseInt($("#zone-" + oldZone).css('height')) / usersInOldZone;
         otherUsersInOldZone = $(".live-user-location.zone-" + oldZone);
         otherUsersInOldZone.animate({
-			"margin-top" : oldMove.top + (oldHeight * (usersInOldZone - 1)) - oldMove.top + 1,
-        	height: oldHeight
-        }, 'slow');
+       "margin-top" : oldMove.top + (oldHeight * (usersInOldZone - 1)) + 1,
+          height: oldHeight
+        }, 'medium');
 
         /* get the new height of the div by dividing by the number of users in the zone */
-    	newHeight = parseInt($("#zone-" + newZone).css('height')) / usersInNewZone;
-    	newWidth = $("#zone-" + newZone).css('width');
+        newHeight = parseInt($("#zone-" + newZone).css('height')) / usersInNewZone;
+        newWidth = $("#zone-" + newZone).css('width');
 
-    	//console.log(newHeight);
+         console.log(newHeight);
 
         move = $("#zone-" + newZone).position();
         console.log("top: " + move.top + (newHeight * (usersInNewZone - 1)));
         console.log("left: " + move.left);
+
+
+        var newTopMargin =  move.top + (newHeight * (usersInNewZone - 1)) + 2;
+
+
         $("#user-" + spotId).animate({
-            "margin-top": move.top + (newHeight * (usersInNewZone - 1)) - move.top + 2,
+            "margin-top": newTopMargin - 4,
             left: move.left + 2,
             width: newWidth,
             height: newHeight
-        }, 'slow');
+        }, 'medium');
 
         otherusersInNewZone = $(".live-user-location.zone-" + newZone);
 
         //console.log(otherusersInNewZone.length);
-        otherusersInNewZone.animate({
-        	height: newHeight
-        }, 'slow');
-	
+        otherusersInNewZone.animate({ 
+          height: newHeight
+        }, 'medium');
+  
+
+      }
+
+    	
     
       /* NEW MOVEMENT DISPLAY CODE */
       
